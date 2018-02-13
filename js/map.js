@@ -28,7 +28,8 @@ function initMap() {
 
 /* ------- View Model ------- */
 var ViewModel = function() {
-    
+    var resultData = ko.observableArray([1,2,3]);
+    alert('The length of the array is ' + resultData().length);
 }
 
 
