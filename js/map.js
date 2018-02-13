@@ -25,6 +25,7 @@ function initMap() {
     });
 }
 
+var myMessage = ko.observable("Is there anybody out there?")
 
 /* ------- View Model ------- */
 var ViewModel = function() {
