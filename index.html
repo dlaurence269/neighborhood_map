@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Rome: Neighborhood Map</title>
+        <!-- Declare Character Set -->
+        <meta charset="utf-8">
+        <!-- Link Bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <!-- Set Viewport -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Load CSS -->
+        <link rel="stylesheet" type="text/css" href="/static/styles.css">
+    </head>
+
+    <body>
+            <!-- Map -->
+            <div id="map" class="container"></div>
+
+            <!-- Side Panel -->
+            <div id="side-panel" class="container col-xs-12 col-sm-4 col-lg-3">
+                <button id="close-side-panel-button" class="button">X</button>
+                <br>
+                <br>
+                <input id="searchbar" class="form-control" type="text" placeholder="Search">
+                <hr>
+                <!-- List of Results -->
+                <div  id="results">
+                    <!-- Example of Collapsed Result -->
+                    <div class="row title-line">
+                        <img class="img-responsive col-xs-4" src="/static/images/pantheon.jpeg" alt="Image">
+                        <p class="title">Pantheon</p>
+                    </div>
+                    <p class="description">Iconic temple built circa 118 to 125 A.D. with a dome &amp; Renaissance tombs, including Raphael's.</p>
+                    <hr>
+                    <!-- Example of Expanded Result -->
+                    <div class="row title-line">
+                        <img class="img-responsive col-xs-4" src="/static/images/colosseum.jpg" alt="Image">
+                        <p class="title">Colesseum</p>
+                    </div>
+                    <p class="description">Monumental 3-tiered Roman amphitheater once used for gladiatorial games, with guided tour option.</p>
+                    <p>Piazza del Colosseo, 1, 00184 Roma RM, Italy</p>
+                    <p>+39 06 3996 7700</p>
+                    <p>0830 - 1900 Daily.</p>
+                    <p>Colosseo</p>
+                    <div class="row web-links">
+                        <a href="https://www.coopculture.it/en/colosseo-e-shop.cfm" target="_blank">Website</a>
+                        <a href="https://www.tripadvisor.com/Attraction_Review-g187791-d192285-Reviews-Colosseum-Rome_Lazio.html" target="_blank">Trip&nbsp;Advisor</a>
+                        <a href="https://en.wikipedia.org/wiki/Colosseum" target="_blank">Wikipedia</a>
+                    </div>
+                    <hr>
+                    <!-- Example of Collapsed Result -->
+                    <div class="row title-line">
+                        <img class="img-responsive col-xs-4" src="/static/images/catacombs_of_st._callixtus.jpg" alt="Image">
+                        <p class="title">Catacombs of St. Callixtus</p>
+                    </div>
+                    <p class="description">Ancient Christian burial tunnels containing 3rd-century frescoes &amp; the crypts of martyrs &amp; popes.</p>
+                    <hr>
+                </div>
+            </div>
+     
+        <!-- Load JavaScript -->
+        <script src="js/knockout_2.2.0.js"></script>
+        <script src="js/data.js"></script>
+        <script src="js/map.js"></script>
+        <!-- Load the Google Map JS API ASYNCHRONOUSLY -->
+        <script async defer 
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOKLk5ig0xf2-881RHBrgL2B63F033oKM&callback=initMap"
+            type="text/javascript">
+        </script>
+    </body>
+</html>
