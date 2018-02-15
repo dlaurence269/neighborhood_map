@@ -24,22 +24,16 @@
                 <input id="searchbar" class="form-control" type="text" placeholder="Search">
                 <hr>
                 <!-- List of Results -->
-                <div  id="results">
+                <div  id="results" data-bind="foreach: results">
                     <!-- Example of Collapsed Result -->
-                    <!-- Test Data -->
-                    <div data-bind="foreach: data">
-                            <p data-bind="text: name"></p>
-                            <p data-bind="text: type"></p>
-                    </div>
-                    <hr>
                     <div class="row title-line">
-                        <img class="img-responsive col-xs-4" src="/static/images/pantheon.jpeg" alt="Image">
-                        <p class="title">Pantheon</p>
+                        <!-- <img class="img-responsive col-xs-4" data-bind="attr:{src: img}" alt="Image"> -->
+                        <p class="title" data-bind="text: name"></p>
                     </div>
-                    <p class="description">Iconic temple built circa 118 to 125 A.D. with a dome &amp; Renaissance tombs, including Raphael's.</p>
+                    <p class="description" data-bind="text: description"></p>
                     <hr>
                     <!-- Example of Expanded Result -->
-                    <div class="row title-line">
+                    <!-- <div class="row title-line">
                         <img class="img-responsive col-xs-4" src="/static/images/colosseum.jpg" alt="Image">
                         <p class="title">Colesseum</p>
                     </div>
@@ -53,14 +47,7 @@
                         <a href="https://www.tripadvisor.com/Attraction_Review-g187791-d192285-Reviews-Colosseum-Rome_Lazio.html" target="_blank">Trip&nbsp;Advisor</a>
                         <a href="https://en.wikipedia.org/wiki/Colosseum" target="_blank">Wikipedia</a>
                     </div>
-                    <hr>
-                    <!-- Example of Collapsed Result -->
-                    <div class="row title-line">
-                        <img class="img-responsive col-xs-4" src="/static/images/catacombs_of_st._callixtus.jpg" alt="Image">
-                        <p class="title">Catacombs of St. Callixtus</p>
-                    </div>
-                    <p class="description">Ancient Christian burial tunnels containing 3rd-century frescoes &amp; the crypts of martyrs &amp; popes.</p>
-                    <hr>
+                    <hr> -->
                 </div>
             </div>
      

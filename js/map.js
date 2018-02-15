@@ -29,12 +29,7 @@ function initMap() {
 /* ------- View Model ------- */
 var ViewModel = function() {
     var self = this;
-
-    self.data = ko.observableArray([
-        { name: "Bungle", type: "Bear" },
-        { name: "George", type: "Hippo" },
-        { name: "Zippy", type: "Unknown" }
-    ]);
+    self.data = ko.observableArray(results);
 }
 
 
