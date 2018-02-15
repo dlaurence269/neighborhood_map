@@ -25,16 +25,16 @@ function initMap() {
     });
 }
 
-var myMessage = ko.observable("Is there anybody out there?")
 
 /* ------- View Model ------- */
 var ViewModel = function() {
-    var resultData = ko.observableArray([
+    var self = this;
+
+    self.data = ko.observableArray([
         { name: "Bungle", type: "Bear" },
         { name: "George", type: "Hippo" },
         { name: "Zippy", type: "Unknown" }
     ]);
-    alert('The length of the array is ' + resultData().length);
 }
 
 
