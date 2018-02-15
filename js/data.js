@@ -13,7 +13,9 @@ var results = [
         website: "",
         tripAdvisor: "https://www.tripadvisor.com/Attraction_Review-g187791-d197714-Reviews-Pantheon-Rome_Lazio.html",
         wikiLink: "https://en.wikipedia.org/wiki/Pantheon,_Rome",
-        notes: ""
+        notes: "",
+        lat: 41.898691,
+        lng: 12.476873
     },{
         id: 2,
         name: "Colesseum",
@@ -26,7 +28,9 @@ var results = [
         website: "https://www.coopculture.it/en/colosseo-e-shop.cfm",
         tripAdvisor: "https://www.tripadvisor.com/Attraction_Review-g187791-d192285-Reviews-Colosseum-Rome_Lazio.html",
         wikiLink: "https://en.wikipedia.org/wiki/Colosseum",
-        notes: ""
+        notes: "",
+        lat: 41.890370,
+        lng: 12.492252
     },{
         id: 3,
         name: "Catacombs of St. Callixtus",
@@ -39,7 +43,9 @@ var results = [
         website: "http://www.catacombe.roma.it/en/info_biglietti.php",
         tripAdvisor: "https://www.tripadvisor.com/Attraction_Review-g187791-d208557-Reviews-Catacombe_di_San_Callisto-Rome_Lazio.html",
         wikiLink: "https://en.wikipedia.org/wiki/Catacomb_of_Callixtus",
-        notes: ""
+        notes: "",
+        lat: 41.860904,
+        lng: 12.508740
     },{
         id: 4,
         name: "Villa Medici",
@@ -52,7 +58,9 @@ var results = [
         website: "https://www.lonelyplanet.com/italy/rome/attractions/villa-medici/a/poi-sig/390035/359975",
         tripAdvisor: "https://www.tripadvisor.com/Attraction_Review-g187791-d590483-Reviews-Villa_Medici_Accademia_di_Francia_a_Roma-Rome_Lazio.html",
         wikiLink: "https://en.wikipedia.org/wiki/Villa_Medici",
-        notes: ""
+        notes: "",
+        lat: 41.908564,
+        lng: 12.482590
     },{
         id: 5,
         name: "Museum Leonardo Da Vinci Experience",
@@ -65,7 +73,9 @@ var results = [
         website: "http://www.leonardodavincimuseo.com/en/",
         tripAdvisor: "https://www.tripadvisor.com/Attraction_Review-g187791-d10660982-Reviews-Museo_Leonardo_Da_Vinci_Experience-Rome_Lazio.html",
         wikiLink: "",
-        notes: ""
+        notes: "",
+        lat: 41.902111,
+        lng: 12.461670
     },{
         id: 6,
         name: "Vatican City",
@@ -78,7 +88,9 @@ var results = [
         website: "http://www.vaticanstate.va/content/vaticanstate/en/monumenti.html",
         tripAdvisor: "https://www.tripadvisor.com/Attraction_Review-g187793-d1968471-Reviews-Vatican_City-Vatican_City_Lazio.html",
         wikiLink: "https://en.wikipedia.org/wiki/Vatican_City",
-        notes: ""
+        notes: "",
+        lat: 41.902283,
+        lng: 12.450763
     },{
         id: 7,
         name: "Sistine Chapel",
@@ -91,7 +103,9 @@ var results = [
         website: "http://www.museivaticani.va/content/museivaticani/en/collezioni/musei/cappella-sistina.html",
         tripAdvisor: "https://www.tripadvisor.com/Attraction_Review-g187793-d190130-Reviews-Sistine_Chapel-Vatican_City_Lazio.html",
         wikiLink: "https://en.wikipedia.org/wiki/Sistine_Chapel",
-        notes: ""
+        notes: "",
+        lat: 41.903091,
+        lng: 12.454473
     },{
         id: 8,
         name: "St. Peter's Basilica",
@@ -104,6 +118,8 @@ var results = [
         website: "http://www.museivaticani.va/content/museivaticani/en/visita-i-musei/scegli-la-visita/musei-e-collezioni/musei-vaticani-e-basilica-di-san-pietro.html",
         tripAdvisor: "https://www.tripadvisor.com/Attraction_Review-g187793-d631111-Reviews-St_Peter_s_Basilica-Vatican_City_Lazio.html",
         wikiLink: "https://en.wikipedia.org/wiki/St._Peter%27s_Basilica",
-        notes: ""
+        notes: "",
+        lat: 41.902318,
+        lng: 12.453894
     }
 ];
