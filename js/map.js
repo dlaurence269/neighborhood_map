@@ -9,14 +9,10 @@ function initMap() {
 
     // List of Markers
     results.forEach(function(result) {
-        var resultName = result.name;
-        var resultLat = result.lat;
-        var resultLng = result.lng;
-        var resultName = {lat: resultLat, lng: resultLng};
-        var marker = new google.maps.Marker({
-            position: resultName,
+        new google.maps.Marker({
+            position: {lat: result.lat, lng: result.lng},
             map: map,
-            title: resultName // MAKE THIS A STRING!!! 
+            title: result.name
         });
     })
 }

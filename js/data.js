@@ -1,5 +1,4 @@
 /* ------- Model ------- */
-
 var results = [
     {
         id: 1,
