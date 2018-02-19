@@ -26,6 +26,10 @@ function initMap() {
         map: map,
         title: 'Catacombs of St. Callixtus'
     });
+
+    results.forEach(function(result) {
+    console.log(result);
+});
 }
 
 
