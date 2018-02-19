@@ -28,7 +28,7 @@ function initMap() {
     });
 
     results.forEach(function(result) {
-    console.log(result);
+    console.log(result.lat + ', ' + result.lng);
 });
 }
 
