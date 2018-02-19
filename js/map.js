@@ -17,17 +17,11 @@ function initMap() {
     })
 }
 
+
 /* ------- View Model ------- */
 var ViewModel = function() {
-    var self = this;
-    self.data = ko.observableArray(results);
+    this.data = ko.observableArray(results);
 }
 
 
-ko.applyBindings(
-    new ViewModel()
-);
-
-
-
-
+ko.applyBindings(new ViewModel());
