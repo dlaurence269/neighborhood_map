@@ -8,30 +8,18 @@ function initMap() {
     });
 
     // List of Markers
-    var Pantheon = {lat: 41.898834, lng: 12.477452};
-    var marker = new google.maps.Marker({
-        position: Pantheon,
-        map: map,
-        title: 'Pantheon'
-    });
-    var Colesseum = {lat: 41.890282, lng: 12.492660};
-    var marker = new google.maps.Marker({
-        position: Colesseum,
-        map: map,
-        title: 'Colesseum'
-    });
-    var CatacombsofStCallixtus = {lat: 41.861008, lng: 12.509137};
-    var marker = new google.maps.Marker({
-        position: CatacombsofStCallixtus,
-        map: map,
-        title: 'Catacombs of St. Callixtus'
-    });
-
     results.forEach(function(result) {
-    console.log(result.lat + ', ' + result.lng);
-});
+        var resultName = result.name;
+        var resultLat = result.lat;
+        var resultLng = result.lng;
+        var resultName = {lat: resultLat, lng: resultLng};
+        var marker = new google.maps.Marker({
+            position: resultName,
+            map: map,
+            title: resultName // MAKE THIS A STRING!!! 
+        });
+    })
 }
-
 
 /* ------- View Model ------- */
 var ViewModel = function() {
