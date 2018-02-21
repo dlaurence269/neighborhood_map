@@ -21,7 +21,7 @@
 #side-panel {
     background: #ffffff;
     min-width: 300px;
-    height: 100vh;
+    max-height: 100vh;
     display: inline-block;
     position: absolute;
     border: 1px solid gray;

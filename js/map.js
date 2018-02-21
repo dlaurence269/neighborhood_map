@@ -2,7 +2,7 @@
 $(document).ready(function(){
     $("#close-side-panel-button")
     .click(function(){ 
-        $("#side-panel").toggle("slide");
+        $("#results").toggle("slide");
     });
 });
 
