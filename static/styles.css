@@ -39,6 +39,11 @@
     right: 16px;
 }
 
+#searchbar {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
 #results {
     height: 70vh;
     overflow-y: scroll;
