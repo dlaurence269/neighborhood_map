@@ -1,3 +1,11 @@
+/* - Side Panel - */
+$(document).ready(function(){
+    $("#close-side-panel-button")
+    .click(function(){ 
+        $("#side-panel").toggle("slide");
+    });
+});
+
 /* ------- Map ------- */
 function initMap() {
     // Instantiate Map with Rome as Center
