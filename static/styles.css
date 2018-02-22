@@ -33,12 +33,17 @@
     border-top: 1px solid gray;
 }
 
-#close-side-panel-button {
-    position: absolute;
-    top: 8px;
-    right: 16px;
+.collapse-expand {
+    display: block;
+    float: right;
+    border: none;
+    background-color: white;
     margin-top: 1em;
     margin-bottom: 1em;
+}
+
+.hidden {
+    display: none;
 }
 
 #searchbar {

@@ -1,8 +1,8 @@
 /* - Side Panel - */
 $(document).ready(function(){
-    $("#close-side-panel-button")
-    .click(function(){ 
+    $(".collapse-expand").click(function(){ 
         $("#all-minus").toggle("slide");
+        $(".collapse-expand").toggleClass("hidden");
     });
 });
 
