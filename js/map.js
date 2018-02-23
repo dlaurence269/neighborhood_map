@@ -23,6 +23,22 @@ function initMap() {
             title: result.name
         });
     })
+
+    // Info Window
+    var contentString = "Is there anybody out there?";
+    var piazzaVenezia = {lat: 41.895868, lng: 12.482558};
+    var infowindow = new google.maps.InfoWindow({
+      content: contentString
+    });
+
+    var marker = new google.maps.Marker({
+        position: piazzaVenezia,
+        map: map,
+        title: "Piazza Venezia"
+    });
+    marker.addListener('click', function() {
+        infowindow.open(map, marker);
+    });
 }
 
 
