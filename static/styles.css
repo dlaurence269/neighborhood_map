@@ -16,6 +16,13 @@
 }
 
 /**********
+* Infowindow
+**********/
+.infowindow-title {
+    font-weight: bold;
+}
+
+/**********
 * Side Panel
 **********/
 #side-panel {
