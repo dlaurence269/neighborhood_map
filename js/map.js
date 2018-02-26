@@ -33,7 +33,12 @@ function initMap() {
         marker.addListener('click', function() {
             infowindow.open(map, marker);
         });
-    })    
+        // Selected marker bounces
+        marker.addListener('click', function() {
+            marker.setAnimation(google.maps.Animation.BOUNCE);
+            setTimeout(function(){ marker.setAnimation(null); }, 750);
+        });
+    })  
 }
 
 
