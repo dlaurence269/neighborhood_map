@@ -17,28 +17,23 @@ function initMap() {
 
     // List of Markers
     results.forEach(function(result) {
-        new google.maps.Marker({
+        var marker = new google.maps.Marker({
             position: {lat: result.lat, lng: result.lng},
             map: map,
             title: result.name
         });
+        
+        // Info Window
+        var infowindow = new google.maps.InfoWindow({
+          content: result.name
+        });
+
+        marker.addListener('click', function() {
+            infowindow.open(map, marker);
+        });
     })
 
-    // Info Window
-    var contentString = "Is there anybody out there?";
-    var piazzaVenezia = {lat: 41.895868, lng: 12.482558};
-    var infowindow = new google.maps.InfoWindow({
-      content: contentString
-    });
-
-    var marker = new google.maps.Marker({
-        position: piazzaVenezia,
-        map: map,
-        title: "Piazza Venezia"
-    });
-    marker.addListener('click', function() {
-        infowindow.open(map, marker);
-    });
+    
 }
 
 
