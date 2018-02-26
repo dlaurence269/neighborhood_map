@@ -26,7 +26,7 @@ function initMap() {
         
         // Info Window
         var infowindow = new google.maps.InfoWindow({
-          content: result.name
+          content: '<img src=' + result.imageURL + '>' + result.name
         });
         // Click to open Info Window
         marker.addListener('click', function() {
