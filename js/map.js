@@ -6,6 +6,7 @@ $(document).ready(function(){
     });
 });
 
+
 /* ------- Map ------- */
 function initMap() {
     // Instantiate Map with Rome as Center
@@ -27,13 +28,11 @@ function initMap() {
         var infowindow = new google.maps.InfoWindow({
           content: result.name
         });
-
+        // Click to open Info Window
         marker.addListener('click', function() {
             infowindow.open(map, marker);
         });
-    })
-
-    
+    })    
 }
 
 
