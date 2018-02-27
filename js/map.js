@@ -33,7 +33,7 @@ function initMap() {
         });
     });
 
-    // Click to close all Info Windows
+    // Loop to close all Info Windows
     function closeInfoWindows() {
         infoWindows.forEach(function(infoWindow) {
             infoWindow.close()
