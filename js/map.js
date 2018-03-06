@@ -7,6 +7,23 @@ $(document).ready(function(){
 });
 
 
+/* --- Search Bar --- */
+// On keypress search data in array for matches.
+// Filter results based on matches.
+
+// convert names and inputs to lowercase before comparing
+
+
+// var displayData = "Pantheon, Colesseum, Villa Medici";
+// var searchText = "Pan";
+
+// function findMatch(searchText) {
+//     return displayData.includes(searchText)
+// }
+
+// findMatch(searchText);
+
+
 /* ------- Map ------- */
 function initMap() {
     // Instantiate Map with Rome as Center
@@ -47,13 +64,6 @@ function initMap() {
             infoWindows[index].open(map, marker);
         });
     });
-    
-    // // Selected marker bounces
-    // marker.addListener('click', function() {
-    //     marker.setAnimation(google.maps.Animation.BOUNCE);
-    //     setTimeout(function(){ marker.setAnimation(null); }, 700);
-    // });
-      
 }
 
 
