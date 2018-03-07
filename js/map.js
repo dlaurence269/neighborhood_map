@@ -14,9 +14,11 @@ $(document).ready(function(){
 // Convert names and inputs to lowercase before comparing
 
 // Returns True or False if the substring is found in the name for each result in results.
-var substring = "Pantheon";
+var searchString = "";
+var searchStringTwo = document.getElementById("searchbar");
+
 results.map(function(result) {
-    return result.name.indexOf(substring) !==-1;
+    return result.name.indexOf(searchString) !==-1;
 });
 
 
