@@ -13,11 +13,25 @@ $(document).ready(function(){
 
 // convert names and inputs to lowercase before comparing
 
-var arrayOfStrings = ["foo", "bar", "blurb"];
 var substring = "oo";
+var objectOfStrings = [
+    {
+        name: "foo",
+        job: "bar",
+        description: "blurb"
+    }, {
+        name: "fupe",
+        job: "bar",
+        description: "blurb"
+    }, {
+        name: "oope",
+        job: "baroo",
+        description: "blurb"
+    }
+];
 
-arrayOfStrings.map(function(string) {
-    return string.indexOf(substring) !==-1;
+objectOfStrings.map(function(object) {
+    return object.name.indexOf(substring) !==-1;
 });
 
 
