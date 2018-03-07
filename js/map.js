@@ -13,20 +13,12 @@ $(document).ready(function(){
 
 // convert names and inputs to lowercase before comparing
 
-var string = "foo";
-var arrayy = ["foo", "bar"];
+var arrayOfStrings = ["foo", "bar", "blurb"];
 var substring = "oo";
-string.indexOf(substring) !== -1;
 
-for (i=0; i<arrayy.length; i++) {
-    if (arrayy[i].indexOf(substring) !==-1) {
-        console.log("has it");
-    } else {
-        console.log("doesn't has it");
-    }
-}
-
-
+arrayOfStrings.map(function(string) {
+    return string.indexOf(substring) !==-1;
+});
 
 
 /* ------- Map ------- */
