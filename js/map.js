@@ -13,15 +13,20 @@ $(document).ready(function(){
 
 // convert names and inputs to lowercase before comparing
 
+var string = "foo";
+var arrayy = ["foo", "bar"];
+var substring = "oo";
+string.indexOf(substring) !== -1;
 
-// var displayData = "Pantheon, Colesseum, Villa Medici";
-// var searchText = "Pan";
+for (i=0; i<arrayy.length; i++) {
+    if (arrayy[i].indexOf(substring) !==-1) {
+        console.log("has it");
+    } else {
+        console.log("doesn't has it");
+    }
+}
 
-// function findMatch(searchText) {
-//     return displayData.includes(searchText)
-// }
 
-// findMatch(searchText);
 
 
 /* ------- Map ------- */
