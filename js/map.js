@@ -13,25 +13,9 @@ $(document).ready(function(){
 
 // convert names and inputs to lowercase before comparing
 
-var substring = "oo";
-var objectOfStrings = [
-    {
-        name: "foo",
-        job: "bar",
-        description: "blurb"
-    }, {
-        name: "fupe",
-        job: "bar",
-        description: "blurb"
-    }, {
-        name: "oope",
-        job: "baroo",
-        description: "blurb"
-    }
-];
-
-objectOfStrings.map(function(object) {
-    return object.name.indexOf(substring) !==-1;
+var substring = "Pantheon";
+results.map(function(result) {
+    return result.name.indexOf(substring) !==-1;
 });
 
 
