@@ -1,7 +1,7 @@
 /* --- Side Panel --- */
 $(document).ready(function(){
     $(".collapse-expand").click(function(){ 
-        $("#all-minus").toggle("slide");
+        $("#search-and-results").toggle("slide");
         $(".collapse-expand").toggleClass("hidden");
     });
 });
