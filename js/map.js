@@ -8,21 +8,27 @@ $(document).ready(function(){
 
 
 /* --- Search Bar --- */
-// To Do
-// On keypress search data in array for matches.
-// Filter results based on matches.
 // Convert names and inputs to lowercase before comparing
 
-// Returns True or False if the substring is found in the name for each result in results.
+// Update search string by typing in the search bar.
+// Default value is blank.
 var searchString = "";
 function changeSearchString() {
     var searchString = document.getElementById("searchbar");
 }
 
+// Returns True or False for each result in results
+// if the search string is found in the name.
 results.map(function(result) {
     return result.name.indexOf(searchString) !==-1;
 });
 
+// Filter results based on matches.
+// var sample = [1, 2, 3]
+// var displayNewResults = sample.filter(function(elem){
+//     return elem !== 2;
+// })
+// console.log(displayNewResults)
 
 /* ------- Map ------- */
 function initMap() {
