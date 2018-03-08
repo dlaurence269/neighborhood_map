@@ -15,7 +15,9 @@ $(document).ready(function(){
 
 // Returns True or False if the substring is found in the name for each result in results.
 var searchString = "";
-var searchStringTwo = document.getElementById("searchbar");
+function changeSearchString() {
+    var searchString = document.getElementById("searchbar");
+}
 
 results.map(function(result) {
     return result.name.indexOf(searchString) !==-1;
