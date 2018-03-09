@@ -22,10 +22,11 @@
                 <button id="open-side-panel-button" class="button glyphicon glyphicon-chevron-down collapse-expand hidden"></button>
                 <div id="search-and-results">
                     <!-- Search Bar -->
-                    <input data-bind="value: searchString" id="searchbar" class="form-control" type="text" placeholder="Search"onkeypress="changeSearchString()">
+                    <input data-bind="value: searchString" id="searchbar" class="form-control"
+                           type="text" placeholder="Search" onkeypress="filterResults()">
                     <hr>
                     <!-- List of Results -->
-                    <div  id="results" data-bind="foreach: results">
+                    <div  id="results" data-bind="foreach: data">
                         <div class="row title-line">
                             <img class="img-responsive col-xs-4" data-bind="attr:{src: imageURL}" alt="Image">
                             <p class="title" data-bind="text: name"></p>

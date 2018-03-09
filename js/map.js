@@ -9,26 +9,22 @@ $(document).ready(function(){
 
 /* --- Search Bar --- */
 // Convert names and inputs to lowercase before comparing
+// .toLowerCase()
 
 // Update search string by typing in the search bar.
 // Default value is blank.
 var searchString = "";
-function changeSearchString() {
-    var searchString = document.getElementById("searchbar");
-}
-
-// Returns True or False for each result in results
-// if the search string is found in the name.
-results.map(function(result) {
-    return result.name.indexOf(searchString) !==-1;
-});
+var filteredResults = results;
 
 // Filter results based on matches.
-// var sample = [1, 2, 3]
-// var displayNewResults = sample.filter(function(elem){
-//     return elem !== 2;
-// })
-// console.log(displayNewResults)
+function filterResults() {
+    console.log(searchString);
+    filteredResults = results.filter(function(result) {
+        return result.name.indexOf(searchString) !==-1;
+    });
+    console.log(filteredResults);
+}
+
 
 /* ------- Map ------- */
 function initMap() {
@@ -40,7 +36,7 @@ function initMap() {
     });
 
     // List of Markers
-    var markers = results.map(function(result) {
+    var markers = filteredResults.map(function(result) {
         return new google.maps.Marker({
             position: {lat: result.lat, lng: result.lng},
             map: map,
@@ -75,7 +71,7 @@ function initMap() {
 
 /* ------- View Model ------- */
 var ViewModel = function() {
-    this.data = ko.observableArray(results);
+    this.data = ko.observableArray(filteredResults);
 }
 
 
