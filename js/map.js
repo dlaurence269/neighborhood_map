@@ -1,4 +1,5 @@
 /* --- Side Panel --- */
+// Close and Open side panel
 $(document).ready(function(){
     $(".collapse-expand").click(function(){ 
         $("#search-and-results").toggle("slide");
@@ -8,21 +9,23 @@ $(document).ready(function(){
 
 
 /* --- Search Bar --- */
-// Convert names and inputs to lowercase before comparing
-// .toLowerCase()
-
-// Update search string by typing in the search bar.
-// Default value is blank.
+// Default search value is blank.
+// Default list of results is all results.
 var searchString = "";
 var filteredResults = results;
 
 // Filter results based on matches.
 function filterResults() {
+    // Update search string by typing in the search bar.
+    searchString = $("#searchbar").val().toLowerCase();
     console.log(searchString);
+    // Check lowercase search string against lowercase results.
     filteredResults = results.filter(function(result) {
-        return result.name.indexOf(searchString) !==-1;
+        return result.name.toLowerCase().indexOf(searchString) !==-1;
     });
     console.log(filteredResults);
+    // Reinitiate map with filtered results.
+    initMap();
 }
 
 
@@ -71,7 +74,8 @@ function initMap() {
 
 /* ------- View Model ------- */
 var ViewModel = function() {
-    this.data = ko.observableArray(filteredResults);
+    self = this;
+    self.data = ko.observableArray(filteredResults);
 }
 
 
