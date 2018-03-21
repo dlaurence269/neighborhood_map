@@ -1,11 +1,25 @@
 /* --- Side Panel --- */
 // Close and Open side panel
 $(document).ready(function(){
-    $(".collapse-expand").click(function(){ 
+    $(".collapse-expand-panel").click(function(){ 
         $("#search-and-results").toggle("slide");
-        $(".collapse-expand").toggleClass("hidden");
+        $(".collapse-expand-panel").toggleClass("hidden");
     });
 });
+
+
+// Collpase and expand side panel results
+// $(document).ready(function(){
+//     $(".collapse-expand").click(function(){ 
+//         $("#results").toggle("slide");
+//         $(".collapse-expand").toggleClass("hidden");
+//     });
+// });
+// Create two classes of results
+//      One that is default, with core data
+//      Second with rest of data with display blank by default
+// Write method to switch class
+// Write styling that changes display
 
 
 /* --- Search Bar --- */
