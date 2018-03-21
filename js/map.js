@@ -9,12 +9,12 @@ $(document).ready(function(){
 
 
 // Collpase and expand side panel results
-// $(document).ready(function(){
-//     $(".collapse-expand").click(function(){ 
-//         $("#results").toggle("slide");
-//         $(".collapse-expand").toggleClass("hidden");
-//     });
-// });
+$(document).ready(function(){
+    $(".title-line").click(function(){ 
+        $(".collapse-expand-result").toggle("slide");
+        $(".collapse-expand-result").toggleClass("hidden");
+    });
+});
 // Create two classes of results
 //      One that is default, with core data
 //      Second with rest of data with display blank by default

@@ -31,15 +31,17 @@
                             <img class="img-responsive col-xs-4" data-bind="attr:{src: imageURL}" alt="Image">
                             <p class="title" data-bind="text: name"></p>
                         </div>
-                        <p class="description" data-bind="text: description"></p>
-                        <p data-bind="text: address"></p>
-                        <p data-bind="text: number"></p>
-                        <p data-bind="text: hours"></p>
-                        <p data-bind="text: closestTransitStop"></p>
-                        <div class="row web-links">
-                            <a data-bind="attr:{href: website}" target="_blank">Website</a>
-                            <a data-bind="attr:{href: tripAdvisor}" target="_blank">Trip&nbsp;Advisor</a>
-                            <a data-bind="attr:{href: wikiLink}" target="_blank">Wikipedia</a>
+                        <div class="below-title collapse-expand-result">
+                            <p class="description" data-bind="text: description"></p>
+                            <p data-bind="text: address"></p>
+                            <p data-bind="text: number"></p>
+                            <p data-bind="text: hours"></p>
+                            <p data-bind="text: closestTransitStop"></p>
+                            <div class="row web-links">
+                                <a data-bind="attr:{href: website}" target="_blank">Website</a>
+                                <a data-bind="attr:{href: tripAdvisor}" target="_blank">Trip&nbsp;Advisor</a>
+                                <a data-bind="attr:{href: wikiLink}" target="_blank">Wikipedia</a>
+                            </div>
                         </div>
                         <hr>
                     </div>
