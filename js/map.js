@@ -14,20 +14,6 @@ $(document).ready(function(){
 var searchString = "";
 var filteredResults = results;
 
-// Filter results based on matches.
-function filterResults() {
-    // Update search string by typing in the search bar.
-    searchString = $("#searchbar").val().toLowerCase();
-    console.log(searchString);
-    // Check lowercase search string against lowercase results.
-    filteredResults = results.filter(function(result) {
-        return result.name.toLowerCase().indexOf(searchString) !==-1;
-    });
-    console.log(filteredResults);
-    // Reinitiate map with filtered results.
-    initMap();
-}
-
 
 /* ------- Map ------- */
 function initMap() {
@@ -76,6 +62,20 @@ function initMap() {
 var ViewModel = function() {
     self = this;
     self.data = ko.observableArray(filteredResults);
+    self.filter = ko.computed(
+        // Filter results based on matches.
+        // function filterResults(searchString) {
+            function() {
+            // Update search string by typing in the search bar.
+            // searchString = $("#searchbar").val().toLowerCase();
+            // Check lowercase search string against lowercase results.
+            filteredResults = results.filter(function(result) {
+                return result.name.toLowerCase().indexOf(searchString) !==-1;
+            });
+            // Reinitiate map with filtered results.
+            // initMap();
+        }
+    );
 }
 
 
