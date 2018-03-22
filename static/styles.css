@@ -69,6 +69,11 @@
     align-items: center;
 }
 
+.title-line:hover {
+    cursor: pointer;
+    opacity: .5;
+}
+
 .title {
     font-weight: bold;
     font-size: 1.12em;
