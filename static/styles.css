@@ -49,6 +49,11 @@
     margin-bottom: 1em;
 }
 
+.collapse-expand-panel:hover {
+    cursor: pointer;
+    opacity: .75;
+}
+
 .hidden {
     display: none;
 }
