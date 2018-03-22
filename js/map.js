@@ -1,4 +1,5 @@
-/* --- Side Panel --- */
+/* ------- Side Panel ------- */
+
 // Close and Open side panel
 $(document).ready(function(){
     $(".collapse-expand-panel").click(function(){ 
@@ -7,7 +8,6 @@ $(document).ready(function(){
     });
 });
 
-
 // Collpase and expand side panel results
 $(document).ready(function(){
     $(".title-line").click(function(){ 
@@ -15,21 +15,18 @@ $(document).ready(function(){
         $(".collapse-expand-result").toggleClass("hidden");
     });
 });
-// Create two classes of results
-//      One that is default, with core data
-//      Second with rest of data with display blank by default
-// Write method to switch class
-// Write styling that changes display
 
 
-/* --- Search Bar --- */
+/* ------- Search Bar ------- */
+
 // Default search value is blank.
 // Default list of results is all results.
 var searchString = "";
 var filteredResults = results;
 
 
-/* ------- Map ------- */
+/* ---------- Map ---------- */
+
 function initMap() {
     // Instantiate Map with Rome as Center
     var rome = {lat: 41.887330, lng: 12.485204};
@@ -72,7 +69,8 @@ function initMap() {
 }
 
 
-/* ------- View Model ------- */
+/* ---------- View Model ---------- */
+
 var ViewModel = function() {
     self = this;
     self.data = ko.observableArray(filteredResults);
