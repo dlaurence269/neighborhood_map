@@ -17,6 +17,28 @@ $(document).ready(function(){
 });
 
 
+// var panelResults = filteredResults.map(function(result) {
+//     return result.name;
+// });
+
+// function closePanelResults() {
+//     panelResults.forEach
+// }
+/**********
+-Change function so that only the selected title expands
+    -copying markers layout?:
+    -create array of reusult names
+    -close all those results
+    -open selected result
+-If you click on a different one the others should all close
+    -set all titles to close
+    -then set specific one to open
+-If you click on the same one multiple times it toggles expand-collapse
+    -simply repeat above step:
+    -closes all titles and then toggles expand-collapse on selected title
+**********/
+
+
 /* ------- Search Bar ------- */
 
 // Default search value is blank.
