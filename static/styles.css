@@ -69,14 +69,14 @@
     overflow-x: hidden;
 }
 
+.result:hover {
+    cursor: pointer;
+    opacity: .5;
+}
+
 .title-line {
     display: flex;
     align-items: center;
-}
-
-.title-line:hover {
-    cursor: pointer;
-    opacity: .5;
 }
 
 .title {
