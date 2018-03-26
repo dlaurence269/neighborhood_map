@@ -11,19 +11,20 @@ $(document).ready(function(){
 // Collpase and Expand side-panel-results
 $(document).ready(function(){
     $(".result").click(function(){ 
-        $(".collapse-expand-result").addClass("hidden");
         var $result = $(this);
-        $result.find(".collapse-expand-result")
-            .toggle("slide")
-            .toggleClass("hidden");
+        // Check if selected result already had the hidden class
+        // (which means it was already collapsed)
+        var currentClasses = $result.find(".collapse-expand-result").attr("class");
+        // Save as a boolean
+        var wasCollapsed = currentClasses.indexOf("hidden") > -1;
+        // hide all
+        $(".collapse-expand-result").addClass("hidden");
+        // if was hidden before, expand now
+        if (wasCollapsed) {
+            $result.find(".collapse-expand-result").toggle("slide").toggleClass("hidden");
+        }
     });
 });
-
-
-/**********
--Move selector to parent, this.parent
--Then target it's child (things to be hidden)
-**********/
 
 
 /* ------- Search Bar ------- */
