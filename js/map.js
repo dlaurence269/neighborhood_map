@@ -1,6 +1,6 @@
 /* ------- Side Panel ------- */
 
-// Close and Open side panel
+// Collpase and Expand side-panel
 $(document).ready(function(){
     $(".collapse-expand-panel").click(function(){ 
         $("#search-and-results").toggle("slide");
@@ -8,34 +8,21 @@ $(document).ready(function(){
     });
 });
 
-// Collpase and expand side panel results
+// Collpase and Expand side-panel-results
 $(document).ready(function(){
-    $(".title-line").click(function(){ 
-        $(".collapse-expand-result").toggle("slide");
-        $(".collapse-expand-result").toggleClass("hidden");
+    $(".result").click(function(){ 
+        $(".collapse-expand-result").addClass("hidden");
+        var $result = $(this);
+        $result.find(".collapse-expand-result")
+            .toggle("slide")
+            .toggleClass("hidden");
     });
 });
 
 
-// var panelResults = filteredResults.map(function(result) {
-//     return result.name;
-// });
-
-// function closePanelResults() {
-//     panelResults.forEach
-// }
 /**********
--Change function so that only the selected title expands
-    -copying markers layout?:
-    -create array of reusult names
-    -close all those results
-    -open selected result
--If you click on a different one the others should all close
-    -set all titles to close
-    -then set specific one to open
--If you click on the same one multiple times it toggles expand-collapse
-    -simply repeat above step:
-    -closes all titles and then toggles expand-collapse on selected title
+-Move selector to parent, this.parent
+-Then target it's child (things to be hidden)
 **********/
 
 
