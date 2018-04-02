@@ -38,6 +38,7 @@
 
 #side-panel hr {
     border-top: 1px solid gray;
+    margin: 0;
 }
 
 .collapse-expand-panel {
@@ -69,9 +70,17 @@
     overflow-x: hidden;
 }
 
+.result {
+    padding-top: 10px;
+}
+
 .result:hover {
     cursor: pointer;
-    opacity: .5;
+    background: #e0ffff;
+}
+
+.selected {
+    background: #e0ffff;
 }
 
 .title-line {
@@ -93,6 +102,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 10px;
 }
 
 .web-links a {
