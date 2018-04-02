@@ -47,12 +47,20 @@ function initMap() {
         center: rome
     });
 
+    // Style the markers a bit. This will be our listing marker icon.
+    var defaultIcon = makeMarkerIcon('0091ff');
+
+    // Create a "highlighted location" marker color for when the user
+    // mouses over the marker.
+    var highlightedIcon = makeMarkerIcon('FFFF24');
+
     // List of Markers
     var markers = filteredResults.map(function(result) {
         return new google.maps.Marker({
             position: {lat: result.lat, lng: result.lng},
             map: map,
             animation: google.maps.Animation.DROP,
+            icon: defaultIcon,
             title: result.name
         });
     });
@@ -71,13 +79,37 @@ function initMap() {
         });
     }
 
+    // Loop to reset all markers to default
+    function resetMarkers() {
+        markers.forEach(function(marker) {
+            marker.setIcon(defaultIcon);
+        });
+    }
+
     // Click to open Info Window
     markers.forEach(function(marker, index) {
         marker.addListener('click', function() {
             closeInfoWindows();
+            resetMarkers();
             infoWindows[index].open(map, marker);
+            marker.setIcon(highlightedIcon);
         });
     });
+
+    // This function takes in a COLOR, and then creates a new marker
+    // icon of that color. The icon will be 21 px wide by 34 high, have an origin
+    // of 0, 0 and be anchored at 10, 34).
+    function makeMarkerIcon(markerColor) {
+        var markerImage = new google.maps.MarkerImage(
+            'http://chart.googleapis.com/chart?chst=d_map_spin&chld=1.15|0|'+ markerColor +
+            '|40|_|%E2%80%A2',
+            new google.maps.Size(21, 34),
+            new google.maps.Point(0, 0),
+            new google.maps.Point(10, 34),
+            new google.maps.Size(21,34)
+        );
+        return markerImage;
+    }
 }
 
 
