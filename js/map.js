@@ -17,11 +17,13 @@ $(document).ready(function(){
         var currentClasses = $result.find(".collapse-expand-result").attr("class");
         // Save as a boolean
         var wasCollapsed = currentClasses.indexOf("hidden") > -1;
-        // hide all
+        // hide all, and remove highlighting
         $(".collapse-expand-result").addClass("hidden");
-        // if was hidden before, expand now
+        $(".result").removeClass("selected");
+        // if was hidden before, expand now and highlight
         if (wasCollapsed) {
             $result.find(".collapse-expand-result").toggle("slide").toggleClass("hidden");
+            $result.toggleClass("selected");
         }
     });
 });
