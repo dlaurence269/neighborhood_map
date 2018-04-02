@@ -48,7 +48,7 @@ function initMap() {
     });
 
     // Style the markers a bit. This will be our listing marker icon.
-    var defaultIcon = makeMarkerIcon('0091ff');
+    var defaultIcon = null;
 
     // Create a "highlighted location" marker color for when the user
     // mouses over the marker.
@@ -56,13 +56,14 @@ function initMap() {
 
     // List of Markers
     var markers = filteredResults.map(function(result) {
-        return new google.maps.Marker({
+        var marker = new google.maps.Marker({
             position: {lat: result.lat, lng: result.lng},
             map: map,
             animation: google.maps.Animation.DROP,
-            icon: defaultIcon,
             title: result.name
         });
+        defaultIcon = marker.getIcon();
+        return marker;
     });
         
     // List of Info Windows
