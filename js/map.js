@@ -1,43 +1,65 @@
-/* ------- Side Panel ------- */
+/* ------- Variable Declarations ------- */
 
-// Collpase and Expand side-panel
-$(document).ready(function(){
-    $(".collapse-expand-panel").click(function(){ 
-        $("#search-and-results").toggle("slide");
-        $(".collapse-expand-panel").toggleClass("hidden");
-    });
-});
-
-// Collpase and Expand side-panel-results
-$(document).ready(function(){
-    $(".result").click(function(){ 
-        var $result = $(this);
-        // Check if selected result already had the hidden class
-        // (which means it was already collapsed)
-        var currentClasses = $result.find(".collapse-expand-result").attr("class");
-        // Save as a boolean
-        var wasCollapsed = currentClasses.indexOf("hidden") > -1;
-        // hide all, and remove highlighting
-        $(".collapse-expand-result").addClass("hidden");
-        $(".result").removeClass("selected");
-        // if was hidden before, expand now and highlight
-        if (wasCollapsed) {
-            $result.find(".collapse-expand-result").toggle("slide").toggleClass("hidden");
-            $result.toggleClass("selected");
-        }
-    });
-});
-
-
-/* ------- Search Bar ------- */
-
-// Default search value is blank.
-// Default list of results is all results.
 var searchString = "";
 var filteredResults = results;
+var markers = [];
+var infoWindows = [];
+var defaultIcon = null;
+var highlightedIcon = null;
 
 
-/* ---------- Map ---------- */
+/* ------- Helper Methods ------- */
+
+function resetResults() {
+    // hide all, and remove highlighting
+    $(".collapse-expand-result").addClass("hidden");
+    $(".result").removeClass("selected");
+}
+
+function selectResult($result) {
+    // Expand and highlight selected result
+    $result.find(".collapse-expand-result").toggle("slide").toggleClass("hidden");
+    $result.toggleClass("selected");
+}
+
+function closeInfoWindows() {
+    infoWindows.forEach(function(infoWindow) {
+        infoWindow.close()
+    });
+}
+
+function resetMarkers() {
+    markers.forEach(function(marker) {
+        marker.setIcon(defaultIcon);
+    });
+}
+
+/* ------- Click Handlers ------- */
+
+function toggleSidePanel() {
+    $("#search-and-results").toggle("slide");
+    $(".collapse-expand-panel").toggleClass("hidden");
+}
+
+function showResult() { 
+    var $result = $(this);
+    var currentClasses = $result.find(".collapse-expand-result").attr("class");
+    var wasCollapsed = currentClasses.indexOf("hidden") > -1;
+    
+    resetResults();
+    // if was hidden before, expand now and highlight
+    if (wasCollapsed) { selectResult($result); }
+}
+
+function showMarker(map, marker, index) {
+    closeInfoWindows();
+    resetMarkers();
+    infoWindows[index].open(map, marker);
+    marker.setIcon(highlightedIcon);
+}
+
+
+/* ----- Google Map API Callback Function ----- */
 
 function initMap() {
     // Instantiate Map with Rome as Center
@@ -47,15 +69,8 @@ function initMap() {
         center: rome
     });
 
-    // Style the markers a bit. This will be our listing marker icon.
-    var defaultIcon = null;
-
-    // Create a "highlighted location" marker color for when the user
-    // mouses over the marker.
-    var highlightedIcon = makeMarkerIcon('FFFF24');
-
     // List of Markers
-    var markers = filteredResults.map(function(result) {
+    markers = filteredResults.map(function(result) {
         var marker = new google.maps.Marker({
             position: {lat: result.lat, lng: result.lng},
             map: map,
@@ -67,33 +82,16 @@ function initMap() {
     });
         
     // List of Info Windows
-    var infoWindows = markers.map(function(marker) {
+    infoWindows = markers.map(function(marker) {
         return new google.maps.InfoWindow({
             content: '<p class="infowindow-title">' + marker.title + '</p>'
         });
     });
 
-    // Loop to close all Info Windows
-    function closeInfoWindows() {
-        infoWindows.forEach(function(infoWindow) {
-            infoWindow.close()
-        });
-    }
-
-    // Loop to reset all markers to default
-    function resetMarkers() {
-        markers.forEach(function(marker) {
-            marker.setIcon(defaultIcon);
-        });
-    }
-
     // Click to open Info Window
     markers.forEach(function(marker, index) {
         marker.addListener('click', function() {
-            closeInfoWindows();
-            resetMarkers();
-            infoWindows[index].open(map, marker);
-            marker.setIcon(highlightedIcon);
+            return showMarker(map, marker, index)
         });
     });
 
@@ -111,6 +109,8 @@ function initMap() {
         );
         return markerImage;
     }
+
+    highlightedIcon = makeMarkerIcon('FFFF24');
 }
 
 
@@ -137,3 +137,10 @@ var ViewModel = function() {
 
 
 ko.applyBindings(new ViewModel());
+
+function bindEventHandlers() {
+    $(".collapse-expand-panel").click(toggleSidePanel);
+    $(".result").click(showResult);
+}
+
+$(document).ready(bindEventHandlers);
