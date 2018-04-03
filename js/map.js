@@ -1,11 +1,12 @@
 /* ------- Variable Declarations ------- */
 
-var searchString = "";
 var filteredResults = results;
+var searchString = "";
 var markers = [];
 var infoWindows = [];
 var defaultIcon = null;
 var highlightedIcon = null;
+var map = null;
 
 
 /* ------- Helper Methods ------- */
@@ -41,6 +42,13 @@ function toggleSidePanel() {
     $(".collapse-expand-panel").toggleClass("hidden");
 }
 
+function showMarker(map, index, marker) {
+    closeInfoWindows();
+    resetMarkers();
+    infoWindows[index].open(map, marker);
+    marker.setIcon(highlightedIcon);
+}
+
 function showResult() { 
     var $result = $(this);
     var currentClasses = $result.find(".collapse-expand-result").attr("class");
@@ -49,13 +57,13 @@ function showResult() {
     resetResults();
     // if was hidden before, expand now and highlight
     if (wasCollapsed) { selectResult($result); }
-}
 
-function showMarker(map, marker, index) {
-    closeInfoWindows();
-    resetMarkers();
-    infoWindows[index].open(map, marker);
-    marker.setIcon(highlightedIcon);
+    var index = results.findIndex(function(result) {
+        var resultID = $result.attr("data-id");
+        return result.id == resultID
+    });
+    var marker = markers[index];
+    showMarker(map, index, marker);
 }
 
 
@@ -64,7 +72,7 @@ function showMarker(map, marker, index) {
 function initMap() {
     // Instantiate Map with Rome as Center
     var rome = {lat: 41.887330, lng: 12.485204};
-    var map = new google.maps.Map(document.getElementById('map'), {
+    map = new google.maps.Map(document.getElementById('map'), {
         zoom: 13,
         center: rome
     });
@@ -91,7 +99,7 @@ function initMap() {
     // Click to open Info Window
     markers.forEach(function(marker, index) {
         marker.addListener('click', function() {
-            return showMarker(map, marker, index)
+            return showMarker(map, index, marker)
         });
     });
 
