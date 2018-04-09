@@ -35,6 +35,7 @@ function resetMarkers() {
     });
 }
 
+
 /* ------- Click Handlers ------- */
 
 function toggleSidePanel() {
