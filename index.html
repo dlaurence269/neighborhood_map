@@ -22,11 +22,11 @@
                 <button id="open-side-panel-button" class="button glyphicon glyphicon-chevron-down collapse-expand-panel hidden"></button>
                 <div id="search-and-results">
                     <!-- Search Bar -->
-                    <input data-bind="value: searchString, event: { keypress: filter}" id="searchbar" class="form-control"
-                           type="text" placeholder="Search">
+                    <input id="searchbar" class="form-control" type="text" placeholder="Search" 
+                    data-bind="value: searchString, valueUpdate: 'keyup'" autocomplete="off">
                     <hr>
                     <!-- List of Results -->
-                    <div id="results" data-bind="foreach: data">
+                    <div id="results" data-bind="foreach: filteredResults">
                         <div class="result" data-bind="attr:{'data-id': id}">
                             <div class="row title-line">
                                 <img class="img-responsive col-xs-4" data-bind="attr:{src: imageURL}" alt="Image">
