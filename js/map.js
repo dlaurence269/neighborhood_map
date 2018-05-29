@@ -125,27 +125,19 @@ function initMap() {
 
 /* ---------- View Model ---------- */
 
-var ViewModel = function() {
-    self = this;
-    self.data = ko.observableArray(filteredResults);
-    self.filter = ko.computed(
-        // Filter results based on matches.
-        // function filterResults(searchString) {
-            function() {
-            // Update search string by typing in the search bar.
-            // searchString = $("#searchbar").val().toLowerCase();
-            // Check lowercase search string against lowercase results.
-            filteredResults = results.filter(function(result) {
-                return result.name.toLowerCase().indexOf(searchString) !==-1;
-            });
-            // Reinitiate map with filtered results.
-            // initMap();
-        }
-    );
+function ViewModel(results) {
+    var self = this;
+
+    self.searchString = ko.observable('');
+    self.filteredResults = ko.computed(function() {
+        return results.filter(function(result) {
+            return result.name.toLowerCase().indexOf(self.searchString()) !== -1;
+        });
+    }, self);
 }
 
-
-ko.applyBindings(new ViewModel());
+var viewModel = new ViewModel(results);
+ko.applyBindings(viewModel);
 
 function bindEventHandlers() {
     $(".collapse-expand-panel").click(toggleSidePanel);
@@ -153,3 +145,4 @@ function bindEventHandlers() {
 }
 
 $(document).ready(bindEventHandlers);
+
