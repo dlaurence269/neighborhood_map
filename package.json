@@ -1,0 +1,23 @@
+{
+  "name": "neighborhood_map",
+  "version": "1.0.0",
+  "description": "This is Udacity's Final Front-End Project",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.16.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dlaurence269/neighborhood_map.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dlaurence269/neighborhood_map/issues"
+  },
+  "homepage": "https://github.com/dlaurence269/neighborhood_map#readme"
+}

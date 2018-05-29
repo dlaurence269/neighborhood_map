@@ -1,0 +1,50 @@
+statuses[]
+    retweeted_status
+        user
+            profile_image_url_https: "https://pbs.twimg.com/profile_images/987335304464994305/XkQymhVB_normal.jpg"
+
+statuses[]
+    retweeted_status
+        extended_entities
+            id: 988161272758919169
+            id_str: 988161272758919169
+
+statuses[]
+    retweeted_status
+        text: "RT @Mustapha1508: #Buonanotte #Grandebellezza 💫🥅🧡 #Romeisus #Pantheon @TrastevereRM @3BMeteo https://t.co/rMKpANN2kU"
+
+statuses[]
+    retweeted_status
+        user
+            name: "Mustapha Hussein"
+
+statuses[]
+    retweeted_status
+        created_at: "Sun Apr 22 21:03:01 +0000 2018"
+
+statuses[]
+    retweeted_status
+        user
+            description: "🇮🇹Italia 🇱🇧Libano #Roma è ❤️ Amor. Traduttore. Esperto in Comunicazione e relazioni internazionali. Giving is a lifestyle."
+
+statuses[]
+    retweeted_status
+        extended_entities
+            media[]
+                media_url_https: "https://pbs.twimg.com/media/DbanbHfXkAAs0mf.jpg"
+
+statuses[]
+    entities
+        hashtags[]
+            indices[]
+                text: "Pantheon"
+
+
+
+profile image
+profile name
+profile handle
+hashtags
+post date vs created date???
+description
+image

@@ -9,7 +9,7 @@
         <!-- Set Viewport -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Load CSS -->
-        <link rel="stylesheet" type="text/css" href="static/styles.css">
+        <link rel="stylesheet" type="text/css" href="styles.css">
     </head>
 
     <body>
@@ -49,6 +49,20 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Tweet -->
+            <div id="info-window-content-0" class="hidden">
+                <!-- Profile Image -->
+                <img class="user-profile-image-url" 
+                src="https://pbs.twimg.com/profile_images/987335304464994305/XkQymhVB_normal.jpg" alt="Profile Image">
+                <p class="user-name">Mustapha Hussein</p>
+                <p class="retweeted-status-text-handle">@Mustapha1508</p>
+                <p class="retweeted-status-created-at">Sun Apr 22 21:03:01 +0000 2018</p>
+                <p class="user-description">🇮🇹Italia 🇱🇧Libano #Roma è ❤️ Amor. Traduttore. Esperto in Comunicazione e relazioni internazionali. Giving is a lifestyle.</p>
+                <p class="retweeted-status-text">#Buonanotte #Grandebellezza 💫🥅🧡 #Romeisus #Pantheon @TrastevereRM @3BMeteo https://t.co/rMKpANN2kU</p>
+                <!-- <img class="retweeted-status-extended-entities-media-media-url-https" 
+                src="https://pbs.twimg.com/media/DbanbHfXkAAs0mf.jpg" alt="Posted Image"> -->
+            </div>
      
         <!-- Load JavaScript -->
         <script src="js/knockout_2.2.0.js"></script>
@@ -59,6 +73,21 @@
         <script async defer 
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOKLk5ig0xf2-881RHBrgL2B63F033oKM&callback=initMap"
             type="text/javascript">
+        </script>
+        <!-- Load Twitter API -->
+        <!-- <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> -->
+        <!-- AJAX Request to Backend to Fetch Twitter Data -->
+            <!-- needs to make a call to backend to run the get twitter data function, and do so before page loads -->
+        <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script> -->
+        <script type="text/javascript" src="server.js">
+            $.ajax({
+                type: "POST",
+                url: "/server.js",
+                data: getTwitterAccessToken(),
+                dataType: 'jsonp'
+            }).done(function(response){
+                console.log("Response: " + response)
+            });
         </script>
     </body>
 </html>

@@ -114,3 +114,11 @@
 .web-links a:last-child {
     border: none;
 }
+
+/*Twitter*/
+.info-window-content {
+    max-width: 250px;
+    max-height: 250px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
