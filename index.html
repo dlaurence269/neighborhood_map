@@ -27,7 +27,7 @@
                     <hr>
                     <!-- List of Results -->
                     <div id="results" data-bind="foreach: filteredResults">
-                        <div class="result" data-bind="attr:{'data-id': id}">
+                        <div class="result" data-bind="attr:{'data-id': id}, event: { click: $root.showResult }">
                             <div class="row title-line">
                                 <img class="img-responsive col-xs-4" data-bind="attr:{src: imageURL}" alt="Image">
                                 <p class="title" data-bind="text: name"></p>

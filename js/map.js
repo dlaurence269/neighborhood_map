@@ -50,8 +50,8 @@ function showMarker(map, index, marker) {
     marker.setIcon(highlightedIcon);
 }
 
-function showResult() { 
-    var $result = $(this);
+function showResult(data, event) { 
+    var $result = $(event.target).closest(".result");
     var currentClasses = $result.find(".collapse-expand-result").attr("class");
     var wasCollapsed = currentClasses.indexOf("hidden") > -1;
     
@@ -129,6 +129,7 @@ function ViewModel(results) {
     var self = this;
 
     self.searchString = ko.observable('');
+    self.showResult = showResult;
     self.filteredResults = ko.computed(function() {
         return results.filter(function(result) {
             return result.name.toLowerCase().indexOf(self.searchString()) !== -1;
@@ -141,7 +142,6 @@ ko.applyBindings(viewModel);
 
 function bindEventHandlers() {
     $(".collapse-expand-panel").click(toggleSidePanel);
-    $(".result").click(showResult);
 }
 
 $(document).ready(bindEventHandlers);
