@@ -1,5 +1,5 @@
 /* ------- Model ------- */
-var results = [
+module.exports = [
     {
         id: 1,
         name: "Pantheon",

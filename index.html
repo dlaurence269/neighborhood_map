@@ -50,10 +50,13 @@
                 </div>
             </div>
 
-            <!-- Tweet -->
+            <!-- Yelp -->
             <div id="info-window-content-0" class="hidden">
-                <!-- Profile Image -->
-                <p>"rating": 4.5, "review_count": 355</p>
+                <!--  -->
+                <div class="rating-and-review">
+                    <p class="rating">Rating: 4.5</p>
+                    <p class="review-count">Review Count: 355</p>
+                </div>
             </div>
      
         <!-- Load JavaScript -->
@@ -66,11 +69,7 @@
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOKLk5ig0xf2-881RHBrgL2B63F033oKM&callback=initMap"
             type="text/javascript">
         </script>
-        <!-- Load Twitter API -->
-        <!-- <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> -->
-        <!-- AJAX Request to Backend to Fetch Twitter Data -->
-            <!-- needs to make a call to backend to run the get twitter data function, and do so before page loads -->
-        <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script> -->
+        <!-- Call Yelp API -->
         <script type="text/javascript" src="server.js">
             $.ajax({
                 type: "POST",

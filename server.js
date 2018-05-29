@@ -8,6 +8,8 @@ var path = require('path');
 var $ = require('jquery');
 var btoa = require('btoa');
 var request = require('request');
+var results = require('./static/js/dataTwo');
+
 
 var app = express();
 var port = 8000;
@@ -28,9 +30,9 @@ app.get('/', function (request, response) {
 
 /* ------- Helper Methods ------- */
 
-function authenticateToken() {
+function authenticateToken(id) {
     request({
-        uri: "https://api.yelp.com/v3/businesses/pantheon-basilica-di-santa-maria-ad-martyres-roma",
+        uri: "https://api.yelp.com/v3/businesses/"+id,
         method: "GET",
         headers: {
                 "Authorization":"Bearer " + "S4XcB3erCr3mv3ZsCdnTCpjNXY0vTFo-3E6KCA7fbtQ1XtLPVwJQ7pKxH0EEFuAUCDEqwN67anPUjtxAZwvKnn1CZt9xd9wub7R6CMBXj044MF788sYhdVj12ZoNW3Yx",
@@ -44,4 +46,11 @@ function authenticateToken() {
     });
 }
 
-authenticateToken();
+function authenticateEachToken(results) {
+    results.forEach(function(result) {
+        authenticateToken(result.yelpBusinessID)
+    });
+}
+
+
+authenticateEachToken(results);
