@@ -65,6 +65,24 @@
         <script src="js/bundle.js"></script>
         <script src="js/map.js"></script>
 
+        <!-- Call Backend for Yelp Data -->
+       <script type="text/javascript">
+            window.onload = function() {
+                getYelpData();
+            };
+
+            function getYelpData(){
+                $.ajax({
+                    type: "GET",
+                    url: 'http://localhost:8000/ajaxURL',
+                    // data: window[a]();, // this needs to be returned JSON data
+                    dataType: 'text'
+                }).done(function(response){
+                    console.log("Response: " + response)
+                });
+            }
+        </script>
+
         <!-- Load the Google Map JS API ASYNCHRONOUSLY -->
         <script async defer 
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOKLk5ig0xf2-881RHBrgL2B63F033oKM&callback=initMap"

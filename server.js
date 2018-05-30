@@ -1,6 +1,6 @@
 /* ------- Backend for Application ------- */
 
-// Node equivalent of importing library, in this case load express, path, jquery, btoa and request
+// Node equivalent of importing library, in this case load express, path, jquery, btoa etc.
 // dotenv helps get enviromental variables
 require('dotenv').config()
 var express = require('express');
@@ -13,6 +13,7 @@ var results = require('./static/js/data');
 
 var app = express();
 var port = 8000;
+var allData = [];
 
 // Listen on port, console.log is just to tell the reader what port that is
 app.listen(port, function () {
@@ -26,6 +27,10 @@ app.use(express.static('static'))
 app.get('/', function (request, response) {
   response.sendFile(path.join(__dirname + '/index.html'));
 })
+
+app.get('/ajaxURL', function (request, response) {
+  response.send('I want this string to return to the client');
+});
 
 
 /* ------- Helper Methods ------- */
@@ -41,16 +46,17 @@ function authenticateToken(id) {
         followRedirect: true,
         maxRedirects: 10
     }, function(errorMessage, response, data) {
-            console.log("DATA:", data);
             console.log("ERROR:", errorMessage);
+            console.log("RESPONSE: Too long to print!");
+            console.log("DATA:", data); //change so data is sent somewhere
+            return data;
     });
 }
 
 function authenticateEachToken(results) {
-    results.forEach(function(result) {
-        authenticateToken(result.yelpBusinessID)
+    results.map(function(result) {
+        authenticateToken(result.yelpBusinessID);
     });
 }
-
 
 authenticateEachToken(results);
