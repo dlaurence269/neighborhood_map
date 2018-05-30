@@ -8,7 +8,7 @@ var path = require('path');
 var $ = require('jquery');
 var btoa = require('btoa');
 var request = require('request');
-var results = require('./static/js/dataTwo');
+var results = require('./static/js/data');
 
 
 var app = express();
