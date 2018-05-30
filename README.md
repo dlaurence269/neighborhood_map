@@ -10,7 +10,7 @@
 * This project demonstrates the ability to make a responsive, attractive interface, as well as solidifying skills using third party APIs.
 
 # Running the Code
-* Visit http://www.daniellaurence.com/neighborhood_map/
+* Visit http://map.daniellaurence.com
 
 # Note
 * This project is currently being improved. This README will be more extensive once all of the improvements are finished.
