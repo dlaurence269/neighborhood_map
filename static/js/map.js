@@ -94,7 +94,8 @@ function initMap() {
     infoWindows = markers.map(function(marker) {
         var infowWindowContent = $('#info-window-content-0').html();
         return new google.maps.InfoWindow({
-            content: '<p class="infowindow-title">' + marker.title + '</p>' + '<br>' + '<div class="info-window-content">' + infowWindowContent + '</div>'
+            content: '<p class="infowindow-title">' + marker.title + '</p>'
+            // content: '<p class="infowindow-title">' + marker.title + '</p>' + '<br>' + '<div class="info-window-content">' + infowWindowContent + '</div>'
         });
     });
 

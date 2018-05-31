@@ -14,10 +14,11 @@ var results = require('./static/js/data');
 var app = express();
 var port = 8000;
 var allData = [];
+var test = {"abv":"7","category":{"id":1,"name":"IPA"},"description":"Intense hoppy flavor, only for the cold and bitter at heart. Best served chilled.","ibu":"90","id":1,"name":"Hoppy Bastard","price":"$5.00"}
 
 // Listen on port, console.log is just to tell the reader what port that is
 app.listen(port, function () {
-  console.log(`Neighborhood app listening on port ${port}!`);
+    console.log(`Neighborhood app listening on port ${port}!`);
 })
 
 // Enable access to style files within static directory
@@ -25,11 +26,11 @@ app.use(express.static('static'))
 
 
 app.get('/', function (request, response) {
-  response.sendFile(path.join(__dirname + '/index.html'));
+    response.sendFile(path.join(__dirname + '/index.html'));
 })
 
 app.get('/ajaxURL', function (request, response) {
-  response.send('I want this string to return to the client');
+    response.send(test);
 });
 
 
@@ -48,15 +49,20 @@ function authenticateToken(id) {
     }, function(errorMessage, response, data) {
             console.log("ERROR:", errorMessage);
             console.log("RESPONSE: Too long to print!");
-            console.log("DATA:", data); //change so data is sent somewhere
+            console.log("DATA: Too long to print!");
             return data;
     });
 }
 
 function authenticateEachToken(results) {
-    results.map(function(result) {
-        authenticateToken(result.yelpBusinessID);
+    var allData = results.map(function(result) {
+        var yelpData = authenticateToken(result.yelpBusinessID);
+        console.log("yelpData: ", yelpData);
+        return yelpData;
     });
+    console.log("allData: ", allData);
+    return allData;
 }
 
 authenticateEachToken(results);
+console.log(allData);

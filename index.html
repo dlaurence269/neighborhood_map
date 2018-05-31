@@ -43,6 +43,8 @@
                                     <a data-bind="attr:{href: tripAdvisor}" target="_blank">Trip&nbsp;Advisor</a>
                                     <a data-bind="attr:{href: wikiLink}" target="_blank">Wikipedia</a>
                                 </div>
+                                <!-- test -->
+                                <p class="test"></p>
                             </div>
                             <hr>
                         </div>
@@ -51,13 +53,12 @@
             </div>
 
             <!-- Yelp -->
-            <div id="info-window-content-0" class="hidden">
-                <!--  -->
+           <!--  <div id="info-window-content-0" class="hidden">
                 <div class="rating-and-review">
                     <p class="rating">Rating: 4.5</p>
                     <p class="review-count">Review Count: 355</p>
                 </div>
-            </div>
+            </div> -->
      
         <!-- Load JavaScript -->
         <script src="js/knockout_2.2.0.js"></script>
@@ -75,8 +76,12 @@
                 $.ajax({
                     type: "GET",
                     url: 'http://localhost:8000/ajaxURL',
-                    // data: window[a]();, // this needs to be returned JSON data
-                    dataType: 'text'
+                    // data: test,
+                    dataType: 'text',
+                    success: function(data) {
+                        console.log("Success Data: " + data);
+                        $('.test').text(data);
+                    }
                 }).done(function(response){
                     console.log("Response: " + response)
                 });
