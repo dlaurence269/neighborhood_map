@@ -44,13 +44,21 @@
                                     <a data-bind="attr:{href: wikiLink}" target="_blank">Wikipedia</a>
                                 </div>
                                 <!-- test -->
-                                <p class="test"></p>
+                                <p class="test-rating"></p>
                             </div>
                             <hr>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Yelp -->
+           <!--  <div id="info-window-content-0" class="hidden">
+                <div class="rating-and-review">
+                    <p class="rating">Rating: 4.5</p>
+                    <p class="review-count">Review Count: 355</p>
+                </div>
+            </div> -->
      
         <!-- Load JavaScript -->
         <script src="js/knockout_2.2.0.js"></script>
@@ -68,10 +76,13 @@
                 $.ajax({
                     type: "GET",
                     url: 'http://localhost:8000/ajaxURL',
+                    // data: test,
                     dataType: 'text',
                     success: function(data) {
-                        console.log("Success Data: " + data);
-                        $('.test').text(data);
+                        var jsData = JSON.parse(data);
+                        var value = jsData.description;
+                        console.log("Success Data: " + value);
+                        $('.test-rating').text(value);
                     }
                 }).done(function(response){
                     console.log("Response: " + response)
