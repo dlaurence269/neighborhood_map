@@ -8,6 +8,9 @@ var defaultIcon = null;
 var highlightedIcon = null;
 var map = null;
 
+var jsData = "";
+// var abv = null;
+// var ibu = null;
 
 /* ------- Helper Methods ------- */
 
@@ -35,6 +38,35 @@ function resetMarkers() {
     });
 }
 
+function getYelpData(){
+    $.ajax({
+        type: "GET",
+        url: 'http://localhost:8000/ajaxURL',
+        // data: test,
+        dataType: 'text',
+        success: function(data) {
+            jsData = JSON.parse(data);
+            descriptionOne = jsData[0].description;
+            abvOne = jsData[0].abv
+            ibuOne = jsData[0].ibu 
+            console.log("Success Data - Description: " + descriptionOne);
+            console.log("Success Data - ABV: " + abvOne);
+            console.log("Success Data - IBU: " + ibuOne);
+            $('.rating-one').text(descriptionOne);
+            $('.abv-one').text(abvOne);
+            $('.ibu-one').text(ibuOne);
+            // updateViewModel();
+        }
+    }).done(function(response){
+        console.log("Response: " + response)
+    });
+}
+
+// function updateViewModel() {
+//     // Update view model properties
+//     viewModel.abv(jsData.abv);
+//     viewModel.ibu(jsData.ibu);
+// }
 
 /* ------- Click Handlers ------- */
 
@@ -130,6 +162,9 @@ function initMap() {
 function ViewModel(results) {
     var self = this;
 
+    // self.abv = ko.observable('');
+    // self.ibu = ko.observable('');
+
     self.searchString = ko.observable('');
     self.showResult = showResult;
     self.filteredResults = ko.computed(function() {
@@ -147,4 +182,3 @@ function bindEventHandlers() {
 }
 
 $(document).ready(bindEventHandlers);
-

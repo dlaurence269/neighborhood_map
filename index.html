@@ -44,7 +44,11 @@
                                     <a data-bind="attr:{href: wikiLink}" target="_blank">Wikipedia</a>
                                 </div>
                                 <!-- test -->
-                                <p class="test-rating"></p>
+                                <p class="rating-one"></p>
+                                <p class="abv-one"></p>
+                                <p class="ibu-one"></p>
+                                <!-- <p data-bind="text: abv"></p>
+                                <p data-bind="text: ibu"></p> -->
                             </div>
                             <hr>
                         </div>
@@ -71,23 +75,6 @@
             window.onload = function() {
                 getYelpData();
             };
-
-            function getYelpData(){
-                $.ajax({
-                    type: "GET",
-                    url: 'http://localhost:8000/ajaxURL',
-                    // data: test,
-                    dataType: 'text',
-                    success: function(data) {
-                        var jsData = JSON.parse(data);
-                        var value = jsData.description;
-                        console.log("Success Data: " + value);
-                        $('.test-rating').text(value);
-                    }
-                }).done(function(response){
-                    console.log("Response: " + response)
-                });
-            }
         </script>
 
         <!-- Load the Google Map JS API ASYNCHRONOUSLY -->
