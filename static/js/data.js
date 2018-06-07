@@ -15,9 +15,10 @@ module.exports = [
         notes: "",
         lat: 41.898691,
         lng: 12.476873,
-        yelpBusinessID: "pantheon-basilica-di-santa-maria-ad-martyres-roma",
-        // abv: null,
-        // ibu: null
+        yelpReview: null,
+        yelpReviewCount: null,
+        yelpBusinessID: "pantheon-basilica-di-santa-maria-ad-martyres-roma"
+        
     },{
         id: 2,
         name: "Colesseum",
@@ -33,9 +34,10 @@ module.exports = [
         notes: "",
         lat: 41.890370,
         lng: 12.492252,
-        yelpBusinessID: "colosseo-roma?osq=Colosseum",
-        // abv: null,
-        // ibu: null
+        yelpReview: null,
+        yelpReviewCount: null,
+        yelpBusinessID: "colosseo-roma?osq=Colosseum"
+        
     },{
         id: 3,
         name: "Catacombs of St. Callixtus",
@@ -51,9 +53,10 @@ module.exports = [
         notes: "",
         lat: 41.860904,
         lng: 12.508740,
-        yelpBusinessID: "",
-        // abv: null,
-        // ibu: null
+        yelpReview: null,
+        yelpReviewCount: null,
+        yelpBusinessID: ""
+        
     },{
         id: 4,
         name: "Villa Medici",
@@ -69,9 +72,10 @@ module.exports = [
         notes: "",
         lat: 41.908564,
         lng: 12.482590,
-        yelpBusinessID: "accademia-di-francia-villa-medici-roma?osq=Villa+Medici",
-        // abv: null,
-        // ibu: null
+        yelpReview: null,
+        yelpReviewCount: null,
+        yelpBusinessID: "accademia-di-francia-villa-medici-roma?osq=Villa+Medici"
+        
     },{
         id: 5,
         name: "Museum Leonardo Da Vinci Experience",
@@ -87,9 +91,10 @@ module.exports = [
         notes: "",
         lat: 41.902111,
         lng: 12.461670,
-        yelpBusinessID: "",
-        // abv: null,
-        // ibu: null
+        yelpReview: null,
+        yelpReviewCount: null,
+        yelpBusinessID: ""
+        
     },{
         id: 6,
         name: "Vatican City",
@@ -105,9 +110,10 @@ module.exports = [
         notes: "",
         lat: 41.902283,
         lng: 12.450763,
-        yelpBusinessID: "",
-        // abv: null,
-        // ibu: null
+        yelpReview: null,
+        yelpReviewCount: null,
+        yelpBusinessID: ""
+        
     },{
         id: 7,
         name: "Sistine Chapel",
@@ -123,9 +129,10 @@ module.exports = [
         notes: "",
         lat: 41.903091,
         lng: 12.454473,
-        yelpBusinessID: "cappella-sistina-roma?osq=sistine+chapel",
-        // abv: null,
-        // ibu: null
+        yelpReview: null,
+        yelpReviewCount: null,
+        yelpBusinessID: "cappella-sistina-roma?osq=sistine+chapel"
+        
     },{
         id: 8,
         name: "St. Peter's Basilica",
@@ -141,8 +148,9 @@ module.exports = [
         notes: "",
         lat: 41.902318,
         lng: 12.453894,
-        yelpBusinessID: "basilica-di-san-pietro-roma-4?osq=sistine+chapel",
-        // abv: null,
-        // ibu: null
+        yelpReview: null,
+        yelpReviewCount: null,
+        yelpBusinessID: "basilica-di-san-pietro-roma-4?osq=sistine+chapel"
+        
     }
 ];

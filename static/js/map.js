@@ -7,10 +7,9 @@ var infoWindows = [];
 var defaultIcon = null;
 var highlightedIcon = null;
 var map = null;
-
-var jsData = "";
-// var abv = null;
-// var ibu = null;
+var jsData = [];
+var yelpData = [];
+var combinedData = [];
 
 /* ------- Helper Methods ------- */
 
@@ -38,35 +37,40 @@ function resetMarkers() {
     });
 }
 
-function getYelpData(){
+// Find and change single object
+function replaceObject(array, key, value, array2, key2, value2, key3, value3) {
+    for (var i = 0; i < array.length; i++) {
+        if (array[i][key] === value) {
+            array[i][key2] = value2;
+            array[i][key3] = value3;
+            return array;
+        }
+    }
+    return null;
+}
+
+function getYelpData() {
     $.ajax({
         type: "GET",
         url: 'http://localhost:8000/ajaxURL',
-        // data: test,
         dataType: 'text',
         success: function(data) {
             jsData = JSON.parse(data);
-            descriptionOne = jsData[0].description;
-            abvOne = jsData[0].abv
-            ibuOne = jsData[0].ibu 
-            console.log("Success Data - Description: " + descriptionOne);
-            console.log("Success Data - ABV: " + abvOne);
-            console.log("Success Data - IBU: " + ibuOne);
-            $('.rating-one').text(descriptionOne);
-            $('.abv-one').text(abvOne);
-            $('.ibu-one').text(ibuOne);
-            // updateViewModel();
         }
     }).done(function(response){
-        console.log("Response: " + response)
+        yelpData = jsData.map(function(review){
+            var yelpDatum = {
+                yelpReview: review.abv, 
+                yelpReviewCount: review.ibu,
+                alias: "pantheon-basilica-di-santa-maria-ad-martyres-roma"
+            };
+            return yelpDatum;
+        });
+        
+        combinedData = replaceObject(results, 'yelpBusinessID', "pantheon-basilica-di-santa-maria-ad-martyres-roma", yelpData, 'yelpReview', '6', 'yelpReviewCount', '99');
+        viewModel.results(combinedData); 
     });
 }
-
-// function updateViewModel() {
-//     // Update view model properties
-//     viewModel.abv(jsData.abv);
-//     viewModel.ibu(jsData.ibu);
-// }
 
 /* ------- Click Handlers ------- */
 
@@ -162,13 +166,12 @@ function initMap() {
 function ViewModel(results) {
     var self = this;
 
-    // self.abv = ko.observable('');
-    // self.ibu = ko.observable('');
+    self.results = ko.observableArray(results);
 
     self.searchString = ko.observable('');
     self.showResult = showResult;
     self.filteredResults = ko.computed(function() {
-        return results.filter(function(result) {
+        return self.results().filter(function(result) {
             return result.name.toLowerCase().indexOf(self.searchString()) !== -1;
         });
     }, self);
