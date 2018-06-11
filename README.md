@@ -11,6 +11,8 @@
 * The main purpose of this project is to demonstrate not only our ability to make a responsive, attractive interface, but to solidify our skills using third party APIs.
 
 # How can the code be run?
+This project is run on node 9.11, npm 5.8
+
 ```
 git clone ...
 cd neighborhood_map
