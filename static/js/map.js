@@ -7,7 +7,6 @@ var infoWindows = [];
 var defaultIcon = null;
 var highlightedIcon = null;
 var map = null;
-var jsData = [];
 var yelpData = [];
 var combinedData = [];
 
@@ -37,78 +36,46 @@ function resetMarkers() {
     });
 }
 
-/* --- Basic Way --- */
-// // Find and change single object
-// function replaceObject(array, key, value, array2, key2, value2, key3, value3) {
-//     for (var i = 0; i < array.length; i++) {
-//         if (array[i][key] === value) {
-//             array[i][key2] = value2;
-//             array[i][key3] = value3;
-//             return array;
-//         }
-//     }
-//     return null;
-// }
-
-// // Change all object values with certain keys
-// function replaceAllObjects(array, key, value, array2, key2, value2, key3, value3) {
-//     return array2.forEach(function(){
-//         replaceObject(array, key, value, array2, key2, value2, key3, value3);
-//         return array;
-//     });
-// }
-
-/* --- New Way --- */
-// Find and change single object
-function replaceObject(array, obj, searchValue, newValue, newValue2) {
-    array.find(function (obj) { 
-        obj.yelpBusinessID === searchValue; 
-        obj.yelpReview = newValue;
-        obj.yelpReviewCount = newValue2;
-        return obj;
-    });
-    return array
-}
-
-// Change all object values with certain keys
-// function replaceAllObjects(array, array2, obj, searchValue, newValue, newValue2) {
-//     return array.map(function(){
-//         var newResult = replaceObject(array, obj, searchValue, newValue, newValue2);
-//         return newResult
-//     });
-// }
-
 function getYelpData() {
     $.ajax({
         type: "GET",
-        url: 'http://localhost:8000/ajaxURL',
+        url: 'http://localhost:8000/yelpReviewData',
         dataType: 'text',
         success: function(data) {
-            jsData = JSON.parse(data);
+            console.log("GET success");
+            var yelpData = JSON.parse(data);
+            var newResults = results.map(function(result) {
+
+                var matchingYelpData = yelpData.filter(function(datum){
+                    return datum.alias === result.alias;
+                })[0];
+
+                // TODO: perhaps use ES6
+                if (matchingYelpData) {
+                    for (var property in matchingYelpData) {
+                        if (
+                            matchingYelpData.hasOwnProperty(property) &&
+                            matchingYelpData[property] !== undefined
+                        ) {
+                            result[property] = matchingYelpData[property];
+                        }
+                    }
+                }
+
+                return result;
+            });
+
+            viewModel.results.removeAll();
+            newResults.forEach(function(newResult) {
+                viewModel.results.push(newResult);
+            });
+        },
+        error: function(error){
+            console.error("Yelp data not loaded", error);
+        },
+        done: function() {
+            // handle error case, i.e. replace '--loading--' with 'Unavailable' or something
         }
-    }).done(function(response){
-        yelpData = jsData.map(function(review){
-            var yelpDatum = {
-                yelpReview: review.abv, 
-                yelpReviewCount: review.ibu,
-                alias: "pantheon-basilica-di-santa-maria-ad-martyres-roma"
-            };
-            return yelpDatum;
-        });
-
-
-        /* --- Basic Way --- */
-        // replaceObject(results, 'yelpBusinessID', "pantheon-basilica-di-santa-maria-ad-martyres-roma", yelpData, 'yelpReview', 1.0, 'yelpReviewCount', 1000);
-        /* --- attempt to loop basic way --- */
-        // replaceAllObjects(results, 'yelpBusinessID', "pantheon-basilica-di-santa-maria-ad-martyres-roma", yelpData, 'yelpReview', 1.1, 'yelpReviewCount', 1001);
-        
-        /* --- New Way --- */
-        replaceObject(results, 'obj', "pantheon-basilica-di-santa-maria-ad-martyres-roma", 2.0, 2000);
-        /* --- attempt to loop new way --- */
-        // replaceAllObjects(results, yelpData, 'obj', "pantheon-basilica-di-santa-maria-ad-martyres-roma", 2.2, 2002);
-
-        viewModel.results(results);
-        console.log(results);
     });
 }
 
@@ -211,6 +178,7 @@ function ViewModel(results) {
     self.searchString = ko.observable('');
     self.showResult = showResult;
     self.filteredResults = ko.computed(function() {
+        console.log("A change has happened, recalculating...");
         return self.results().filter(function(result) {
             return result.name.toLowerCase().indexOf(self.searchString()) !== -1;
         });
@@ -224,4 +192,13 @@ function bindEventHandlers() {
     $(".collapse-expand-panel").click(toggleSidePanel);
 }
 
-$(document).ready(bindEventHandlers);
+function makeAjaxCalls() {
+    getYelpData();
+}
+
+function readyPage() {
+    bindEventHandlers();
+    makeAjaxCalls();
+}
+
+$(document).ready(readyPage);

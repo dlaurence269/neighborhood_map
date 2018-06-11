@@ -44,8 +44,8 @@
                                     <a data-bind="attr:{href: wikiLink}" target="_blank">Wikipedia</a>
                                 </div>
                                 <!-- test -->
-                                <p data-bind="text: yelpReview"></p>
-                                <p data-bind="text: yelpReviewCount"></p>
+                                <p data-bind="text: rating"></p>
+                                <p data-bind="text: review_count"></p>
                             </div>
                             <hr>
                         </div>
@@ -66,13 +66,6 @@
         <script src="js/jQuery.js"></script>
         <script src="js/bundle.js"></script>
         <script src="js/map.js"></script>
-
-        <!-- Call Backend for Yelp Data -->
-       <script type="text/javascript">
-            window.onload = function() {
-                getYelpData();
-            };
-        </script>
 
         <!-- Load the Google Map JS API ASYNCHRONOUSLY -->
         <script async defer 

@@ -14,8 +14,14 @@ var results = require('./static/js/data');
 var app = express();
 var port = 8000;
 var allData = [];
-var test = [{"abv":"7","category":{"id":1,"name":"IPA"},"description":"Intense hoppy flavor, only for the cold and bitter at heart. Best served chilled.","ibu":"90","id":1,"name":"Hoppy Bastard","price":"$5.00"},{"abv":"5","category":{"id":1,"name":"IPA"},"description":"Very hoppy and flavorfull aromatics, with medium hoppy flavor. Mid-range alcohol level, easily approachable IPA.","ibu":"40","id":2,"name":"IPA lot when I drink Beer","price":"$2.00"},{"abv":"6","category":{"id":1,"name":"IPA"},"description":"Classic IPA. If you're trying for the first time, this is the most typical IPA around.","ibu":"50","id":3,"name":"IPA IPA IPA","price":"$3.00"},{"abv":"6","category":{"id":1,"name":"IPA"},"description":"If you want an IPA to get pumped about, this is it. Enjoy The best IPA around!","ibu":"60","id":4,"name":"Yippie Aye Yay IPA!","price":"$3.00"},{"abv":"5","category":{"id":1,"name":"IPA"},"description":"This complex mix of smokey, hoppy, curtness will blow you away. No better beer here.","ibu":"50","id":5,"name":"Boring IPA, NOT Today","price":"$2.50"},{"abv":"4.4","category":{"id":2,"name":"Lager"},"description":"America's not oldest brewery makes the yes freshest lager around.","ibu":"12","id":6,"name":"YingYing Lager","price":"$1.00"},{"abv":"5","category":{"id":2,"name":"Lager"},"description":"With a lager this good, you'd be bragging as well.","ibu":"15","id":7,"name":"Bragger Lager","price":"$1.50"},{"abv":"4.5","category":{"id":2,"name":"Lager"},"description":"For those hardworking, blue collar, strong folk. There's nothing better.","ibu":"12","id":8,"name":"Logger Lager","price":"$1.00"}]
-// Listen on port, console.log is just to tell the reader what port that is
+var test = [
+    { "alias": "accademia-di-francia-villa-medici-roma", "rating": 4.5, "review_count": 10 },
+    { "alias": "pantheon-basilica-di-santa-maria-ad-martyres-roma", "rating": 4.5, "review_count": 357 },
+    { "alias": "basilica-di-san-pietro-roma-4", "rating": 5, "review_count": 350 },
+    { "alias": "cappella-sistina-roma", "rating": 4.5, "review_count": 113 },
+    { "alias": "colosseo-roma", "rating": 4.5, "review_count": 801 }
+];
+
 app.listen(port, function () {
     console.log(`Neighborhood app listening on port ${port}!`);
 })
@@ -28,16 +34,19 @@ app.get('/', function (request, response) {
     response.sendFile(path.join(__dirname + '/index.html'));
 })
 
-app.get('/ajaxURL', function (request, response) {
+app.get('/yelpReviewData', function (request, response) {
+    console.log("GET request to /yelpReviewData made. Returning yelp data.");
     response.send(test);
 });
 
 
 /* ------- Helper Methods ------- */
 
-function authenticateToken(id) {
+function authenticateToken(location) {
+    // FIXME what to do with missing alias
+    var yelpBusinessID = [location.alias, location.queryString].join("?");
     request({
-        uri: "https://api.yelp.com/v3/businesses/"+id,
+        uri: "https://api.yelp.com/v3/businesses/" + yelpBusinessID,
         method: "GET",
         headers: {
                 "Authorization":"Bearer " + "S4XcB3erCr3mv3ZsCdnTCpjNXY0vTFo-3E6KCA7fbtQ1XtLPVwJQ7pKxH0EEFuAUCDEqwN67anPUjtxAZwvKnn1CZt9xd9wub7R6CMBXj044MF788sYhdVj12ZoNW3Yx",
@@ -46,16 +55,21 @@ function authenticateToken(id) {
         followRedirect: true,
         maxRedirects: 10
     }, function(errorMessage, response, data) {
-            console.log("ERROR:", errorMessage);
-            console.log("RESPONSE: Too long to print!");
-            console.log("DATA: Too long to print!");
-            return data;
+        if(errorMessage) {
+            console.error(errorMessage, "Yelp data not fetched.");
+        } else {
+            json = JSON.parse(data);
+            // rename alias to yelpBusinessID
+            console.log(json.alias, json.rating, json.review_count);
+            return json;
+        }
+            
     });
 }
 
 function authenticateEachToken(results) {
     var allData = results.map(function(result) {
-        var yelpData = authenticateToken(result.yelpBusinessID);
+        var yelpData = authenticateToken(result);
         console.log("yelpData: ", yelpData);
         return yelpData;
     });
@@ -63,5 +77,5 @@ function authenticateEachToken(results) {
     return allData;
 }
 
-authenticateEachToken(results);
+var allData = authenticateEachToken(results);
 console.log(allData);

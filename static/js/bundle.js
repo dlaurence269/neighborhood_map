@@ -16,9 +16,9 @@ module.exports = [
         notes: "",
         lat: 41.898691,
         lng: 12.476873,
-        yelpReview: null,
-        yelpReviewCount: null,
-        yelpBusinessID: "pantheon-basilica-di-santa-maria-ad-martyres-roma"
+        rating: null,
+        review_count: null,
+        alias: "pantheon-basilica-di-santa-maria-ad-martyres-roma"
         
     },{
         id: 2,
@@ -35,9 +35,10 @@ module.exports = [
         notes: "",
         lat: 41.890370,
         lng: 12.492252,
-        yelpReview: null,
-        yelpReviewCount: null,
-        yelpBusinessID: "colosseo-roma?osq=Colosseum"
+        rating: null,
+        review_count: null,
+        alias: "colosseo-roma",
+        queryString: "osq=Colosseum"
         
     },{
         id: 3,
@@ -54,9 +55,9 @@ module.exports = [
         notes: "",
         lat: 41.860904,
         lng: 12.508740,
-        yelpReview: null,
-        yelpReviewCount: null,
-        yelpBusinessID: ""
+        rating: null,
+        review_count: null,
+        alias: ""
         
     },{
         id: 4,
@@ -73,9 +74,10 @@ module.exports = [
         notes: "",
         lat: 41.908564,
         lng: 12.482590,
-        yelpReview: null,
-        yelpReviewCount: null,
-        yelpBusinessID: "accademia-di-francia-villa-medici-roma?osq=Villa+Medici"
+        rating: null,
+        review_count: null,
+        alias: "accademia-di-francia-villa-medici-roma",
+        queryString: "osq=Villa+Medici"
         
     },{
         id: 5,
@@ -92,9 +94,9 @@ module.exports = [
         notes: "",
         lat: 41.902111,
         lng: 12.461670,
-        yelpReview: null,
-        yelpReviewCount: null,
-        yelpBusinessID: ""
+        rating: null,
+        review_count: null,
+        alias: ""
         
     },{
         id: 6,
@@ -111,9 +113,9 @@ module.exports = [
         notes: "",
         lat: 41.902283,
         lng: 12.450763,
-        yelpReview: null,
-        yelpReviewCount: null,
-        yelpBusinessID: ""
+        rating: null,
+        review_count: null,
+        alias: ""
         
     },{
         id: 7,
@@ -130,9 +132,10 @@ module.exports = [
         notes: "",
         lat: 41.903091,
         lng: 12.454473,
-        yelpReview: null,
-        yelpReviewCount: null,
-        yelpBusinessID: "cappella-sistina-roma?osq=sistine+chapel"
+        rating: null,
+        review_count: null,
+        alias: "cappella-sistina-roma",
+        queryString: "osq=sistine+chapel"
         
     },{
         id: 8,
@@ -149,9 +152,10 @@ module.exports = [
         notes: "",
         lat: 41.902318,
         lng: 12.453894,
-        yelpReview: null,
-        yelpReviewCount: null,
-        yelpBusinessID: "basilica-di-san-pietro-roma-4?osq=sistine+chapel"
+        rating: null,
+        review_count: null,
+        alias: "basilica-di-san-pietro-roma-4",
+        queryString: "osq=sistine+chapel"
         
     }
 ];
