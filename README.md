@@ -11,4 +11,13 @@
 * The main purpose of this project is to demonstrate not only our ability to make a responsive, attractive interface, but to solidify our skills using third party APIs.
 
 # How can the code be run?
+```
+git clone ...
+cd neighborhood_map
+npm install
+browserify static/js/data_pipe.js -o static/js/bundle.js
+node server.js
+```
+
+# Live Site
 * Visit http://www.daniellaurence.com/neighborhood_map/
