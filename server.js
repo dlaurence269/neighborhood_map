@@ -41,7 +41,6 @@ app.get('/yelpReviewData', function (request, response) {
 /* ------- Helper Methods ------- */
 
 function fetchYelpDetail(location) {
-    // FIXME what to do with missing alias
     const yelpBusinessID = [location.alias, location.queryString].join("?");
     return request({
         uri: "https://api.yelp.com/v3/businesses/" + yelpBusinessID,
