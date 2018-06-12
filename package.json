@@ -15,7 +15,7 @@
     "babel-preset-env": "^1.7.0"
   },
   "scripts": {
-    "bundle": "browserify static/js/compiled/data_pipe.js -o static/js/compiled/data_required.js",
+    "bundle": "browserify static/js/compiled/data_pipe.js -o static/js/compiled/results.js",
     "build": "babel static/js/src -d static/js/compiled && npm run bundle",
     "start": "npm run build && node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"

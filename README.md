@@ -29,3 +29,5 @@ Yelp Access Token in like this:
 YELP_ACCESS_TOKEN=67a5df5da756f5567
 ```
 swapping out the example token for yours.
+
+When editing any of the source files (the ones in `./src`) then don't forget to run `npm run build` again before reloading your page.
