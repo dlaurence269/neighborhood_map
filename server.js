@@ -43,7 +43,7 @@ app.get('/yelpReviewData', function (request, response) {
 function authenticateToken(location) {
     // FIXME what to do with missing alias
     var yelpBusinessID = [location.alias, location.queryString].join("?");
-    request({
+    return request({
         uri: "https://api.yelp.com/v3/businesses/" + yelpBusinessID,
         method: "GET",
         headers: {
@@ -69,12 +69,9 @@ function authenticateToken(location) {
 function authenticateEachToken(results) {
     var allData = results.map(function(result) {
         var yelpData = authenticateToken(result);
-        console.log("yelpData: ", yelpData);
         return yelpData;
     });
-    console.log("allData: ", allData);
     return allData;
 }
 
 var allData = authenticateEachToken(results);
-console.log(allData);

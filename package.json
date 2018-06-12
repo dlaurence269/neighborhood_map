@@ -16,7 +16,7 @@
   "scripts": {
     "bundle": "browserify static/js/compiled/data_pipe.js -o static/js/compiled/data_required.js",
     "build": "babel static/js/src -d static/js/compiled && npm run bundle",
-    "start": "node server.js",
+    "start": "npm run build && node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
