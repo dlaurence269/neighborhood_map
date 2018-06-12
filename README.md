@@ -12,7 +12,7 @@
 # Live Site
 * Visit http://map.daniellaurence.com
 
-# How can the code be run?
+# Running the Code
 This project is run on node 9.11, npm 5.8
 
 ```
@@ -29,4 +29,9 @@ YELP_ACCESS_TOKEN=67a5df5da756f5567...
 ```
 swapping out the example token for yours.
 
-:warning: When editing any of the source files (in `./src`), make sure to run `npm run build` before reloading your page. If you make changes to `server.js` then you will have to turn off an on and your server again with `npm start`.
+# :warning: Troubleshooting
+
+When editing any of the source files (in `./src`), make sure to run `npm run build` before reloading your page. If you make changes to `server.js` then you will have to turn off an on and your server again with `npm start`.
+
+If you are running this on a Linux box with nginx you need to install pm2 `sudo npm install -g pm2`.
+You will then need to start the application with `pm2 start start.sh`, where start.sh is the name of the startup file.
