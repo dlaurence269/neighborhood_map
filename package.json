@@ -15,8 +15,8 @@
     "babel-preset-env": "^1.7.0"
   },
   "scripts": {
-    "bundle": "browserify static/js/compiled/data_pipe.js -o static/js/compiled/results.js",
-    "build": "babel static/js/src -d static/js/compiled && npm run bundle",
+    "browserify": "browserify static/js/compiled/data_pipe.js -o static/js/compiled/results.js",
+    "build": "babel static/js/src -d static/js/compiled && npm run browserify",
     "start": "npm run build && node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -24,7 +24,7 @@
     "type": "git",
     "url": "git+https://github.com/dlaurence269/neighborhood_map.git"
   },
-  "author": "",
+  "author": "Daniel Laurence",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/dlaurence269/neighborhood_map/issues"

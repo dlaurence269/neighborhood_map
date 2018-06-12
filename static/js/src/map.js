@@ -93,13 +93,16 @@ function showResultFromSideBar(data, event) {
 }
 
 function showResult($result, triggerSideBarHighlightFromMarker) { 
+    /* Toggle open/closed and highlighting state */
     const currentClasses = $result.find(".collapse-expand-result").attr("class");
     const wasCollapsed = currentClasses.indexOf("hidden") > -1;
-    
+    // Close all results and remove all highlighting
     resetResults();
     // if was hidden before, expand now and highlight
     if (wasCollapsed) { selectResult($result); }
 
+
+    /* Open matching marker */
     const index = results.findIndex(function(result) {
         const resultID = $result.attr("data-id");
         return result.id == resultID

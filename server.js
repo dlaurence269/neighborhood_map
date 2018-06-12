@@ -71,5 +71,8 @@ async function fetchAllYelpDetails(results) {
             return {};
         });
     }
+
+    // Convert the array of the promises into one combined promise
+    // so that I can call .then() on it
     return await Promise.all(results.map(fetchOne));
 }
