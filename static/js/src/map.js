@@ -27,6 +27,11 @@ function resetMarkers() {
     markers.forEach(marker => marker.setIcon(defaultIcon))
 }
 
+function scrollToResultItem(index) {
+    const $result = $($('#results').find('.result')[index]);
+    $('#results').scrollTo($result, 500);
+}
+
 function getYelpData() {
     $.ajax({
         type: "GET",
@@ -70,6 +75,7 @@ function showMarker(map, index, marker, triggerSideBarHighlightFromMarker) {
     infoWindows[index].open(map, marker);
     marker.setIcon(highlightedIcon);
     if (triggerSideBarHighlightFromMarker) {
+        scrollToResultItem(index);
         showResultFromMarker(index);
     }
 }
