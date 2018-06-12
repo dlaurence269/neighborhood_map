@@ -9,8 +9,24 @@
     5. Using an addional third party API (Yelp in this case) to bring in data about the locations.
 * This project demonstrates the ability to make a responsive, attractive interface, as well as solidifying skills using third party APIs.
 
-# Running the Code
+# Live Site
 * Visit http://map.daniellaurence.com
 
-# Note
-* This project is currently being improved. This README will be more extensive once all of the improvements are finished.
+# How can the code be run?
+This project is run on node 9.11, npm 5.8
+
+```
+git clone ...
+cd neighborhood_map
+npm install
+npm start
+```
+
+Make sure you create a `.env` file in your project root directory and put the
+Yelp Access Token in like this:
+```
+YELP_ACCESS_TOKEN=67a5df5da756f5567...
+```
+swapping out the example token for yours.
+
+:warning: When editing any of the source files (in `./src`), make sure to run `npm run build` before reloading your page. If you make changes to `server.js` then you will have to turn off an on and your server again with `npm start`.
