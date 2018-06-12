@@ -5,6 +5,13 @@
     max-height: 100px;
     max-width: 100px;
 }
+.img-thumb {
+    max-height: 50px;
+    height: auto;
+    max-width: 50px;
+    width: auto;
+    margin-right: 10px;
+}
 
 /**********
 * Map
@@ -130,4 +137,18 @@
 
 .web-links a:last-child {
     border: none;
+}
+/* Info Window */
+.info-window-title-line {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 5px;
+}
+.info-window-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 15px;
+    padding-left: 5px;
 }

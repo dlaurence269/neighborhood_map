@@ -91,6 +91,27 @@ function showResult(data, event) {
 
 
 /* ----- Google Map API Callback Function ----- */
+function populateInfoWindows() {
+    infoWindows = results.map(function(result, index) {
+        const $infoWindow = $('#access-details_' + index);
+
+        let content = 
+            `<div class="info-window-title-line">
+                <img class="img-thumb" alt="${result.name}" src="${result.imageURL}">
+                <h4>${result.name}</h4>
+            </div>
+            `;
+        
+        if ($infoWindow.length) {
+            content = content +
+                `<div class="info-window-details">
+                    <div>${$infoWindow.html()}
+                </div>`;
+        }
+
+        return new google.maps.InfoWindow({ content: content });
+    });
+}
 function initMap() {
     // Instantiate Map with Rome as Center
     const rome = {lat: 41.887330, lng: 12.485204};
@@ -110,15 +131,6 @@ function initMap() {
         defaultIcon = marker.getIcon();
         return marker;
     });
-        
-    // List of Info Windows
-    infoWindows = markers.map(function(marker) {
-        const infowWindowContent = $('#info-window-content-0').html();
-        return new google.maps.InfoWindow({
-            content: '<p class="infowindow-title">' + marker.title + '</p>'
-            // content: '<p class="infowindow-title">' + marker.title + '</p>' + '<br>' + '<div class="info-window-content">' + infowWindowContent + '</div>'
-        });
-    });
 
     // Click to open Info Window
     markers.forEach(function(marker, index) {
@@ -126,6 +138,8 @@ function initMap() {
             return showMarker(map, index, marker)
         });
     });
+
+    populateInfoWindows();
 
     // This function takes in a COLOR, and then creates a new marker
     // icon of that color. The icon will be 21 px wide by 34 high, have an origin
