@@ -66,15 +66,21 @@
                                 </div>
                                 <hr/>
                                 <div class="row web-links">
-                                    <a data-bind="attr:{href: website}, if: website" target="_blank" onclick="preventCollapse(event)">
+                                    <!-- ko if: website -->
+                                    <a data-bind="attr:{href: website}" target="_blank" onclick="preventCollapse(event)">
                                         <i class="fas fa-info-circle"></i> Website
                                     </a>
-                                    <a data-bind="attr:{href: tripAdvisor}, if: tripAdvisor" target="_blank" onclick="preventCollapse(event)">
+                                    <!-- /ko -->
+                                    <!-- ko if: tripAdvisor -->
+                                    <a data-bind="attr:{href: tripAdvisor}" target="_blank" onclick="preventCollapse(event)">
                                         <i class="fab fa-tripadvisor"></i> Trip&nbsp;Advisor
                                     </a>
-                                    <a data-bind="attr:{href: wikiLink}, if: wikiLink" target="_blank" onclick="preventCollapse(event)">
+                                    <!-- /ko -->
+                                    <!-- ko if: wikiLink -->
+                                    <a data-bind="attr:{href: wikiLink}" target="_blank" onclick="preventCollapse(event)">
                                         <i class="fab fa-wikipedia-w"></i> Wikipedia
                                     </a>
+                                    <!-- /ko -->
                                 </div>
                             </div>
                         </div>
