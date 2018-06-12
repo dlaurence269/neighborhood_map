@@ -9,7 +9,6 @@ let highlightedIcon = null;
 let map = null;
 
 /* ------- Helper Methods ------- */
-
 function resetResults() {
     // hide all, and remove highlighting
     $(".collapse-expand-result").addClass("hidden");
@@ -57,6 +56,9 @@ function getYelpData() {
 }
 
 /* ------- Click Handlers ------- */
+function preventCollapse(event) {
+    event.stopPropagation();
+}
 
 function toggleSidePanel() {
     $("#search-and-results").toggle("slide");
@@ -89,7 +91,6 @@ function showResult(data, event) {
 
 
 /* ----- Google Map API Callback Function ----- */
-
 function initMap() {
     // Instantiate Map with Rome as Center
     const rome = {lat: 41.887330, lng: 12.485204};
@@ -146,7 +147,6 @@ function initMap() {
 
 
 /* ---------- View Model ---------- */
-
 function ViewModel(results) {
     const self = this;
 
@@ -164,10 +164,23 @@ function ViewModel(results) {
 const viewModel = new ViewModel(results);
 ko.applyBindings(viewModel);
 
-function preventCollapse(event) {
-    event.stopPropagation();
+function starsForRating(rating) {
+    if (rating) {
+        const maxStars = 5;
+        const filled = Math.floor(rating);
+        const half = rating - filled > 0 ? 1 : 0;
+
+        const stars = [];
+        for(let i = 0; i < filled; i++) {
+            stars.push('fa-star');
+        }
+        if (half) stars.push('fa-star-half');
+
+        return stars;
+    }
 }
 
+/* ------- Setup ------- */
 function bindEventHandlers() {
     $(".collapse-expand-panel").click(toggleSidePanel);
 }

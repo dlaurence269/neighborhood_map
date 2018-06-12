@@ -36,27 +36,33 @@
                             </div>
                             <p class="description" data-bind="text: description"></p>
                             <div class="below-title collapse-expand-result hidden">
-                                <p><i class="fas fa-map-marker"></i> <span data-bind="text: address"></span></p>
-                                <p><i class="fas fa-phone"></i> <span data-bind="text: number"></span></p>
-                                <p><i class="fas fa-clock"></i> <span data-bind="text: hours"></span></p>
-                                <p><i class="fas fa-subway"></i> <span data-bind="text: closestTransitStop"></span></p>
+                                <p data-bind="if: address"><i class="fas fa-map-marker"></i> <span data-bind="text: address"></span></p>
+                                <p data-bind="if: number"><i class="fas fa-phone"></i> <span data-bind="text: number"></span></p>
+                                <p data-bind="if: hours"><i class="fas fa-clock"></i> <span data-bind="text: hours"></span></p>
+                                <p data-bind="if: closestTransitStop"><i class="fas fa-subway"></i> <span data-bind="text: closestTransitStop"></span></p>
                                 <hr/>
                                 <div class="row web-links">
-                                    <a data-bind="attr:{href: website}" target="_blank" onclick="preventCollapse(event)">
+                                    <a data-bind="attr:{href: website}, if: website" target="_blank" onclick="preventCollapse(event)">
                                         <i class="fas fa-info-circle"></i> Website
                                     </a>
-                                    <a data-bind="attr:{href: tripAdvisor}" target="_blank" onclick="preventCollapse(event)">
+                                    <a data-bind="attr:{href: tripAdvisor}, if: tripAdvisor" target="_blank" onclick="preventCollapse(event)">
                                         <i class="fab fa-tripadvisor"></i> Trip&nbsp;Advisor
                                     </a>
-                                    <a data-bind="attr:{href: wikiLink}" target="_blank" onclick="preventCollapse(event)">
+                                    <a data-bind="attr:{href: wikiLink}, if: wikiLink" target="_blank" onclick="preventCollapse(event)">
                                         <i class="fab fa-wikipedia-w"></i> Wikipedia
                                     </a>
                                 </div>
                                 <hr/>
                                 <div class="yelp">
                                     <p><i class="fab fa-yelp"></i> Yelp Content</p>
+                                    <!-- <p data-bind="text">Fetching...</p> -->
                                     <p data-bind="if: alias && rating && review_count && yelpURL">
-                                        Rating: <span data-bind="text: rating"></span> <i class="fas fa-star"></i></span>
+                                        <span data-bind="with: rating">
+                                            <span data-bind="foreach: starsForRating($data)">
+                                                <i class="fas" data-bind="css: $data"></i>
+                                            </span>
+                                        </span> 
+                                        <span data-bind="text: rating"></span> Stars from
                                         <a data-bind="attr:{href: yelpURL}" target="_alt" onclick="preventCollapse(event)">
                                             <span data-bind="text: review_count"></span> reviews
                                         </a>
