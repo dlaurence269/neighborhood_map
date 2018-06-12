@@ -148,6 +148,7 @@ function initMap() {
     // Click to open Info Window
     markers.forEach(function(marker, index) {
         marker.addListener('click', function() {
+            map.setCenter(marker.getPosition());
             const triggerSideBarHighlightFromMarker = true;
             return showMarker(map, index, marker, triggerSideBarHighlightFromMarker);
         });
