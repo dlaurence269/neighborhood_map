@@ -10,6 +10,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Load CSS -->
         <link rel="stylesheet" type="text/css" href="styles.css">
+        <!-- Import Fontawesome Icons -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     </head>
 
     <body>
@@ -34,21 +36,33 @@
                             </div>
                             <p class="description" data-bind="text: description"></p>
                             <div class="below-title collapse-expand-result hidden">
-                                <p data-bind="text: address"></p>
-                                <p data-bind="text: number"></p>
-                                <p data-bind="text: hours"></p>
-                                <p data-bind="text: closestTransitStop"></p>
+                                <p><i class="fas fa-map-marker"></i> <span data-bind="text: address"></span></p>
+                                <p><i class="fas fa-phone"></i> <span data-bind="text: number"></span></p>
+                                <p><i class="fas fa-clock"></i> <span data-bind="text: hours"></span></p>
+                                <p><i class="fas fa-subway"></i> <span data-bind="text: closestTransitStop"></span></p>
+                                <hr/>
                                 <div class="row web-links">
-                                    <a data-bind="attr:{href: website}" target="_blank">Website</a>
-                                    <a data-bind="attr:{href: tripAdvisor}" target="_blank">Trip&nbsp;Advisor</a>
-                                    <a data-bind="attr:{href: wikiLink}" target="_blank">Wikipedia</a>
+                                    <a data-bind="attr:{href: website}" target="_blank" onclick="preventCollapse(event)">
+                                        <i class="fas fa-info-circle"></i> Website
+                                    </a>
+                                    <a data-bind="attr:{href: tripAdvisor}" target="_blank" onclick="preventCollapse(event)">
+                                        <i class="fab fa-tripadvisor"></i> Trip&nbsp;Advisor
+                                    </a>
+                                    <a data-bind="attr:{href: wikiLink}" target="_blank" onclick="preventCollapse(event)">
+                                        <i class="fab fa-wikipedia-w"></i> Wikipedia
+                                    </a>
                                 </div>
-                                <!-- test -->
-                                <p>Yelp Rating: <span data-bind="text: rating"></span></p>
-                                <p><a data-bind="attr:{href: yelpURL}">Yelp Review Count: <span data-bind="text: review_count"></span></a></p>
+                                <hr/>
+                                <div class="yelp">
+                                    <p><i class="fab fa-yelp"></i> Yelp Content</p>
+                                    <p>
+                                        Rating: <span data-bind="text: rating"></span> <i class="fas fa-star"></i>
+                                        <a data-bind="attr:{href: yelpURL}" onclick="preventCollapse(event)"><span data-bind="text: review_count"></span> reviews</a>
+                                    </p>
+                                </div>
                             </div>
-                            <hr>
                         </div>
+                        <hr>
                     </div>
                 </div>
             </div>

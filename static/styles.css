@@ -34,7 +34,7 @@
 **********/
 #side-panel {
     background: #ffffff;
-    min-width: 300px;
+    min-width: 350px;
     max-height: 100vh;
     display: inline-block;
     position: absolute;
@@ -44,8 +44,9 @@
 }
 
 #side-panel hr {
-    border-top: 1px solid gray;
+    border-color: gray;
     margin: 0;
+    padding: 0;
 }
 
 .collapse-expand-panel {
@@ -79,11 +80,16 @@
 
 .result {
     padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .result:hover {
     cursor: pointer;
     background: #e0ffff;
+}
+#side-panel .result hr {
+    border-color: lightgray;
+    padding: 5px;
 }
 
 .selected {

@@ -164,6 +164,10 @@ function ViewModel(results) {
 const viewModel = new ViewModel(results);
 ko.applyBindings(viewModel);
 
+function preventCollapse(event) {
+    event.stopPropagation();
+}
+
 function bindEventHandlers() {
     $(".collapse-expand-panel").click(toggleSidePanel);
 }
