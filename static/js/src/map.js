@@ -154,6 +154,9 @@ function initMap() {
         });
     });
 
+    viewModel.markers.removeAll();
+    markers.forEach(marker => viewModel.markers.push(marker));
+
     populateInfoWindows();
 
     // This function takes in a COLOR, and then creates a new marker
@@ -176,11 +179,11 @@ function initMap() {
 
 
 /* ---------- View Model ---------- */
-function ViewModel(results) {
+function ViewModel(results, markers) {
     const self = this;
 
     self.results = ko.observableArray(results);
-
+    self.markers = ko.observableArray(markers);
     self.searchString = ko.observable('');
     self.showResultFromSideBar = showResultFromSideBar;
     self.filteredResults = ko.computed(() => {
@@ -188,9 +191,22 @@ function ViewModel(results) {
             return result.name.toLowerCase().indexOf(self.searchString()) !== -1;
         });
     }, self);
+    self.filterMarkers = ko.computed(() => {
+        console.log("filterMarkers called");
+        self.results().map((result,index) => {
+            const resultIsPresent = self.filteredResults().find(filteredResult => {
+                return filteredResult.name === result.name;
+            });
+            const visible = !!resultIsPresent;
+            console.debug("marker visible?", visible);
+            const marker = self.markers()[index];
+            if (marker) marker.setVisible(visible);
+            return marker;
+        })
+    }, self); //consider deferring
 }
 
-const viewModel = new ViewModel(results);
+const viewModel = new ViewModel(results, markers);
 ko.applyBindings(viewModel);
 
 function starsForRating(rating) {
