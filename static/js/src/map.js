@@ -35,7 +35,6 @@ function getYelpData() {
         url: 'http://localhost:8000/yelpReviewData',
         dataType: 'text',
         success: function(data) {
-            console.log("GET success");
             const yelpData = JSON.parse(data);
             const newResults = results.map(result => {
                 const matchingYelpData = yelpData.find(datum => datum.alias === result.alias);
@@ -65,15 +64,30 @@ function toggleSidePanel() {
     $(".collapse-expand-panel").toggleClass("hidden");
 }
 
-function showMarker(map, index, marker) {
+function showMarker(map, index, marker, triggerSideBarHighlightFromMarker) {
     closeInfoWindows();
     resetMarkers();
     infoWindows[index].open(map, marker);
     marker.setIcon(highlightedIcon);
+    if (triggerSideBarHighlightFromMarker) {
+        showResultFromMarker(index);
+    }
 }
 
-function showResult(data, event) { 
+function showResultFromMarker(index){
+    const $result = $($('#results').find('.result')[index]);
+    const triggerSideBarHighlightFromMarker = false;
+    showResult($result, triggerSideBarHighlightFromMarker);
+}
+
+function showResultFromSideBar(data, event) {
     const $result = $(event.target).closest(".result");
+    const triggerSideBarHighlightFromMarker = false;
+    showResult($result, triggerSideBarHighlightFromMarker);
+}
+
+function showResult($result, triggerSideBarHighlightFromMarker) { 
+    console.debug("$result",$result);
     const currentClasses = $result.find(".collapse-expand-result").attr("class");
     const wasCollapsed = currentClasses.indexOf("hidden") > -1;
     
@@ -86,7 +100,7 @@ function showResult(data, event) {
         return result.id == resultID
     });
     const marker = markers[index];
-    showMarker(map, index, marker);
+    showMarker(map, index, marker, triggerSideBarHighlightFromMarker);
 }
 
 
@@ -135,7 +149,8 @@ function initMap() {
     // Click to open Info Window
     markers.forEach(function(marker, index) {
         marker.addListener('click', function() {
-            return showMarker(map, index, marker)
+            const triggerSideBarHighlightFromMarker = true;
+            return showMarker(map, index, marker, triggerSideBarHighlightFromMarker)
         });
     });
 
@@ -167,7 +182,7 @@ function ViewModel(results) {
     self.results = ko.observableArray(results);
 
     self.searchString = ko.observable('');
-    self.showResult = showResult;
+    self.showResultFromSideBar = showResultFromSideBar;
     self.filteredResults = ko.computed(() => {
         return self.results().filter( result => {
             return result.name.toLowerCase().indexOf(self.searchString()) !== -1;
