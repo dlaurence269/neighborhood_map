@@ -6,7 +6,7 @@ require('dotenv').config()
 var express = require('express');
 var path = require('path');
 var request = require('request');
-var results = require('./static/js/data');
+var results = require('./static/js/compiled/data');
 
 
 var app = express();

@@ -8,8 +8,14 @@
     "express": "^4.16.3",
     "request": "^2.87.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0"
+  },
   "scripts": {
+    "bundle": "browserify static/js/compiled/data_pipe.js -o static/js/compiled/data_required.js",
+    "build": "babel static/js/src -d static/js/compiled && npm run bundle",
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

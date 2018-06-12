@@ -19,8 +19,8 @@ This project is run on node 9.11, npm 5.8
 git clone ...
 cd neighborhood_map
 npm install
-browserify static/js/data_pipe.js -o static/js/bundle.js
-node server.js
+npm run build
+npm start
 ```
 
 Make sure you create a `.env` file in your project root directory and put the
