@@ -13,11 +13,11 @@ var app = express();
 var port = 8000;
 var allData = [];
 var test = [
-    { "alias": "accademia-di-francia-villa-medici-roma", "rating": 4.5, "review_count": 10 },
-    { "alias": "pantheon-basilica-di-santa-maria-ad-martyres-roma", "rating": 4.5, "review_count": 357 },
-    { "alias": "basilica-di-san-pietro-roma-4", "rating": 5, "review_count": 350 },
-    { "alias": "cappella-sistina-roma", "rating": 4.5, "review_count": 113 },
-    { "alias": "colosseo-roma", "rating": 4.5, "review_count": 801 }
+    { "alias": "accademia-di-francia-villa-medici-roma", "rating": 4.5, "review_count": 10, yelpURL: "#" },
+    { "alias": "pantheon-basilica-di-santa-maria-ad-martyres-roma", "rating": 4.5, "review_count": 357, yelpURL: "#" },
+    { "alias": "basilica-di-san-pietro-roma-4", "rating": 5, "review_count": 350, yelpURL: "#" },
+    { "alias": "cappella-sistina-roma", "rating": 4.5, "review_count": 113, yelpURL: "#" },
+    { "alias": "colosseo-roma", "rating": 4.5, "review_count": 801, yelpURL: "#" }
 ];
 
 app.listen(port, function () {
@@ -33,7 +33,7 @@ app.get('/', function (request, response) {
 })
 
 app.get('/yelpReviewData', function (request, response) {
-    console.log("GET request to /yelpReviewData made. Returning yelp data.");
+    console.log("GET request to /yelpReviewData made. Returning yelp data:", test);
     response.send(test);
 });
 
@@ -58,7 +58,8 @@ function authenticateToken(location) {
         } else {
             json = JSON.parse(data);
             // rename alias to yelpBusinessID
-            console.log(json.alias, json.rating, json.review_count);
+            // rename url to yelpURL
+            console.log(json.alias, json.rating, json.review_count, json.url);
             return json;
         }
             

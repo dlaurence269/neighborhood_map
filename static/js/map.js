@@ -178,7 +178,6 @@ function ViewModel(results) {
     self.searchString = ko.observable('');
     self.showResult = showResult;
     self.filteredResults = ko.computed(function() {
-        console.log("A change has happened, recalculating...");
         return self.results().filter(function(result) {
             return result.name.toLowerCase().indexOf(self.searchString()) !== -1;
         });

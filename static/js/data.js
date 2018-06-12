@@ -17,6 +17,7 @@ module.exports = [
         lng: 12.476873,
         rating: null,
         review_count: null,
+        yelpURL: null,
         alias: "pantheon-basilica-di-santa-maria-ad-martyres-roma"
         
     },{
@@ -36,6 +37,7 @@ module.exports = [
         lng: 12.492252,
         rating: null,
         review_count: null,
+        yelpURL: null,
         alias: "colosseo-roma",
         queryString: "osq=Colosseum"
         
@@ -56,6 +58,7 @@ module.exports = [
         lng: 12.508740,
         rating: null,
         review_count: null,
+        yelpURL: null,
         alias: ""
         
     },{
@@ -75,6 +78,7 @@ module.exports = [
         lng: 12.482590,
         rating: null,
         review_count: null,
+        yelpURL: null,
         alias: "accademia-di-francia-villa-medici-roma",
         queryString: "osq=Villa+Medici"
         
@@ -95,6 +99,7 @@ module.exports = [
         lng: 12.461670,
         rating: null,
         review_count: null,
+        yelpURL: null,
         alias: ""
         
     },{
@@ -114,6 +119,7 @@ module.exports = [
         lng: 12.450763,
         rating: null,
         review_count: null,
+        yelpURL: null,
         alias: ""
         
     },{
@@ -133,6 +139,7 @@ module.exports = [
         lng: 12.454473,
         rating: null,
         review_count: null,
+        yelpURL: null,
         alias: "cappella-sistina-roma",
         queryString: "osq=sistine+chapel"
         
@@ -153,6 +160,7 @@ module.exports = [
         lng: 12.453894,
         rating: null,
         review_count: null,
+        yelpURL: null,
         alias: "basilica-di-san-pietro-roma-4",
         queryString: "osq=sistine+chapel"
         

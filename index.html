@@ -44,8 +44,8 @@
                                     <a data-bind="attr:{href: wikiLink}" target="_blank">Wikipedia</a>
                                 </div>
                                 <!-- test -->
-                                <p data-bind="text: rating"></p>
-                                <p data-bind="text: review_count"></p>
+                                <p>Yelp Rating: <span data-bind="text: rating"></span></p>
+                                <p><a data-bind="attr:{href: yelpURL}">Yelp Review Count: <span data-bind="text: review_count"></span></a></p>
                             </div>
                             <hr>
                         </div>
