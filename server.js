@@ -5,8 +5,6 @@
 require('dotenv').config()
 var express = require('express');
 var path = require('path');
-var $ = require('jquery');
-var btoa = require('btoa');
 var request = require('request');
 var results = require('./static/js/data');
 
@@ -49,7 +47,7 @@ function authenticateToken(location) {
         uri: "https://api.yelp.com/v3/businesses/" + yelpBusinessID,
         method: "GET",
         headers: {
-                "Authorization":"Bearer " + "S4XcB3erCr3mv3ZsCdnTCpjNXY0vTFo-3E6KCA7fbtQ1XtLPVwJQ7pKxH0EEFuAUCDEqwN67anPUjtxAZwvKnn1CZt9xd9wub7R6CMBXj044MF788sYhdVj12ZoNW3Yx",
+                "Authorization":"Bearer " + process.env.YELP_ACCESS_TOKEN,
             },
         timeout: 10000,
         followRedirect: true,

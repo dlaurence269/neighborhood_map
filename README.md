@@ -9,6 +9,9 @@
     5. Using an addional third party API (Yelp in this case) to bring in data about the locations.
 * This project demonstrates the ability to make a responsive, attractive interface, as well as solidifying skills using third party APIs.
 
+# Live Site
+* Visit http://map.daniellaurence.com
+
 # How can the code be run?
 This project is run on node 9.11, npm 5.8
 
@@ -20,5 +23,9 @@ browserify static/js/data_pipe.js -o static/js/bundle.js
 node server.js
 ```
 
-# Live Site
-* Visit http://map.daniellaurence.com
+Make sure you create a `.env` file in your project root directory and put the
+Yelp Access Token in like this:
+```
+YELP_ACCESS_TOKEN=67a5df5da756f5567
+```
+swapping out the example token for yours.
