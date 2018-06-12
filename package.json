@@ -1,0 +1,33 @@
+{
+  "name": "neighborhood_map",
+  "version": "1.0.0",
+  "description": "This is Udacity's Final Front-End Project",
+  "main": "server.js",
+  "dependencies": {
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "request": "^2.87.0",
+    "request-promise": "^4.2.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0"
+  },
+  "scripts": {
+    "browserify": "browserify static/js/compiled/data_pipe.js -o static/js/compiled/results.js",
+    "build": "babel static/js/src -d static/js/compiled && npm run browserify",
+    "start": "npm run build && node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dlaurence269/neighborhood_map.git"
+  },
+  "author": "Daniel Laurence",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dlaurence269/neighborhood_map/issues"
+  },
+  "homepage": "https://github.com/dlaurence269/neighborhood_map#readme"
+}

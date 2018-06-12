@@ -9,52 +9,94 @@
         <!-- Set Viewport -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Load CSS -->
-        <link rel="stylesheet" type="text/css" href="static/styles.css">
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        <!-- Import Fontawesome Icons -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     </head>
 
     <body>
-            <!-- Map -->
-            <div id="map" class="container"></div>
+        <!-- Map -->
+        <div id="map" class="container"></div>
 
-            <!-- Side Panel -->
-            <div id="side-panel" class="container col-xs-12 col-sm-4 col-lg-3">
-                <button id="close-side-panel-button" class="button glyphicon glyphicon-chevron-up collapse-expand-panel"></button>
-                <button id="open-side-panel-button" class="button glyphicon glyphicon-chevron-down collapse-expand-panel hidden"></button>
-                <div id="search-and-results">
-                    <!-- Search Bar -->
-                    <input id="searchbar" class="form-control" type="text" placeholder="Search" 
-                    data-bind="value: searchString, valueUpdate: 'keyup'" autocomplete="off">
-                    <hr>
-                    <!-- List of Results -->
-                    <div id="results" data-bind="foreach: filteredResults">
-                        <div class="result" data-bind="attr:{'data-id': id}, event: { click: $root.showResult }">
-                            <div class="row title-line">
-                                <img class="img-responsive col-xs-4" data-bind="attr:{src: imageURL}" alt="Image">
-                                <p class="title" data-bind="text: name"></p>
+        <!-- Side Panel -->
+        <div id="side-panel" class="container col-xs-12 col-sm-4 col-lg-3">
+            <button id="close-side-panel-button" class="button glyphicon glyphicon-chevron-up collapse-expand-panel"></button>
+            <button id="open-side-panel-button" class="button glyphicon glyphicon-chevron-down collapse-expand-panel hidden"></button>
+            <div id="search-and-results">
+                <!-- Search Bar -->
+                <input id="searchbar" class="form-control" type="text" placeholder="Search" 
+                data-bind="value: searchString, valueUpdate: 'keyup'" autocomplete="off">
+                <hr>
+                <!-- List of Results -->
+                <div id="results" data-bind="foreach: filteredResults">
+                    <div class="result" data-bind="attr:{'data-id': id}, event: { click: $root.showResultFromSideBar }">
+                        <div class="row title-line">
+                            <img class="img-responsive col-xs-4" data-bind="attr:{src: imageURL}" alt="Image">
+                            <p class="title" data-bind="text: name"></p>
+                        </div>
+                        <p class="description" data-bind="text: description"></p>
+                        <div class="below-title collapse-expand-result hidden">
+                            <div class="access-details hidden" data-bind="attr:{id: 'access-details_' + $index()}">
+                                <p data-bind="if: address"><i class="fas fa-map-marker"></i> <span data-bind="text: address"></span></p>
+                                <p data-bind="if: number"><i class="fas fa-phone"></i> <span data-bind="text: number"></span></p>
+                                <p data-bind="if: hours"><i class="fas fa-clock"></i> <span data-bind="text: hours"></span></p>
+                                <p data-bind="if: closestTransitStop"><i class="fas fa-subway"></i> <span data-bind="text: closestTransitStop"></span></p>
                             </div>
-                            <p class="description" data-bind="text: description"></p>
-                            <div class="below-title collapse-expand-result hidden">
-                                <p data-bind="text: address"></p>
-                                <p data-bind="text: number"></p>
-                                <p data-bind="text: hours"></p>
-                                <p data-bind="text: closestTransitStop"></p>
-                                <div class="row web-links">
-                                    <a data-bind="attr:{href: website}" target="_blank">Website</a>
-                                    <a data-bind="attr:{href: tripAdvisor}" target="_blank">Trip&nbsp;Advisor</a>
-                                    <a data-bind="attr:{href: wikiLink}" target="_blank">Wikipedia</a>
+                            
+                            <div class="yelp">
+                                <div data-bind="if: alias && rating && review_count && yelpURL">
+                                    <p>
+                                        <i class="fab fa-yelp"></i>
+                                        <a data-bind="attr:{href: yelpURL}" target="_alt" onclick="preventCollapse(event)">
+                                            <span data-bind="text: review_count"></span> reviews
+                                        </a>
+                                    </p>
+                                    <p>
+                                        <span data-bind="with: rating">
+                                            <span data-bind="foreach: starsForRating($data)">
+                                                <i class="fas" data-bind="css: $data"></i>
+                                            </span>
+                                        </span> 
+                                        <span data-bind="text: rating"></span> Stars
+                                    </p>
                                 </div>
+                                <p data-bind="if: !(alias && rating && review_count && yelpURL)">
+                                    <span class="italic"><i class="fab fa-yelp"></i> No Yelp data available</span>
+                                </p>
                             </div>
-                            <hr>
+                            <hr/>
+                            <div class="row web-links">
+                                <!-- ko if: website -->
+                                <a data-bind="attr:{href: website}" target="_blank" onclick="preventCollapse(event)">
+                                    <i class="fas fa-info-circle"></i> Website
+                                </a>
+                                <!-- /ko -->
+                                <!-- ko if: tripAdvisor -->
+                                <a data-bind="attr:{href: tripAdvisor}" target="_blank" onclick="preventCollapse(event)">
+                                    <i class="fab fa-tripadvisor"></i> Trip&nbsp;Advisor
+                                </a>
+                                <!-- /ko -->
+                                <!-- ko if: wikiLink -->
+                                <a data-bind="attr:{href: wikiLink}" target="_blank" onclick="preventCollapse(event)">
+                                    <i class="fab fa-wikipedia-w"></i> Wikipedia
+                                </a>
+                                <!-- /ko -->
+                            </div>
                         </div>
                     </div>
+                    <hr>
                 </div>
             </div>
+        </div>
      
         <!-- Load JavaScript -->
-        <script src="js/knockout_2.2.0.js"></script>
-        <script src="js/jQuery.js"></script>
-        <script src="js/data.js"></script>
-        <script src="js/map.js"></script>
+        <script src="js/vendor/knockout_2.2.0.js"></script>
+        <script src="js/vendor/jQuery.js"></script>
+        <script src="js/compiled/results.js"></script>
+        <script src="js/compiled/map.js"></script>
+        <!-- jQuery plugin for scrollTo -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.2/jquery.scrollTo.min.js"></script>
+
         <!-- Load the Google Map JS API ASYNCHRONOUSLY -->
         <script async defer 
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOKLk5ig0xf2-881RHBrgL2B63F033oKM&callback=initMap"
