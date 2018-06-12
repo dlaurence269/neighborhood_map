@@ -1,6 +1,4 @@
 /* ------- Variable Declarations ------- */
-
-let filteredResults = results;
 let searchString = "";
 let markers = [];
 let infoWindows = [];
@@ -37,19 +35,21 @@ function getYelpData() {
         success: function(data) {
             const yelpData = JSON.parse(data);
             const newResults = results.map(result => {
+                // Get matching yelp data set
                 const matchingYelpData = yelpData.find(datum => datum.alias === result.alias);
+                // Merge yelp properties to result
                 const newResult = {...result, ...matchingYelpData};
+                // Return newly merged result object
                 return newResult;
             });
 
+            // Knockout doesn't track object changes inside an array
+            // so I have to remove them all and push new ones
             viewModel.results.removeAll();
             newResults.forEach(newResult => viewModel.results.push(newResult));
         },
         error: function(error){
             console.error("Yelp data not loaded", error);
-        },
-        done: function() {
-            // handle error case, i.e. replace '--loading--' with 'Unavailable' or something
         }
     });
 }
@@ -87,7 +87,6 @@ function showResultFromSideBar(data, event) {
 }
 
 function showResult($result, triggerSideBarHighlightFromMarker) { 
-    console.debug("$result",$result);
     const currentClasses = $result.find(".collapse-expand-result").attr("class");
     const wasCollapsed = currentClasses.indexOf("hidden") > -1;
     
@@ -135,7 +134,7 @@ function initMap() {
     });
 
     // List of Markers
-    markers = filteredResults.map(function(result) {
+    markers = results.map(function(result) {
         const marker = new google.maps.Marker({
             position: {lat: result.lat, lng: result.lng},
             map: map,
@@ -150,13 +149,17 @@ function initMap() {
     markers.forEach(function(marker, index) {
         marker.addListener('click', function() {
             const triggerSideBarHighlightFromMarker = true;
-            return showMarker(map, index, marker, triggerSideBarHighlightFromMarker)
+            return showMarker(map, index, marker, triggerSideBarHighlightFromMarker);
         });
     });
 
+    // Like I said above, Knockout doesn't track object
+    // changes inside an array so I have to remove them all
+    // and push new ones
     viewModel.markers.removeAll();
     markers.forEach(marker => viewModel.markers.push(marker));
 
+    // Populate info window content from generated KO view
     populateInfoWindows();
 
     // This function takes in a COLOR, and then creates a new marker
@@ -192,18 +195,16 @@ function ViewModel(results, markers) {
         });
     }, self);
     self.filterMarkers = ko.computed(() => {
-        console.log("filterMarkers called");
         self.results().map((result,index) => {
             const resultIsPresent = self.filteredResults().find(filteredResult => {
                 return filteredResult.name === result.name;
             });
             const visible = !!resultIsPresent;
-            console.debug("marker visible?", visible);
             const marker = self.markers()[index];
             if (marker) marker.setVisible(visible);
             return marker;
         })
-    }, self); //consider deferring
+    }, self);
 }
 
 const viewModel = new ViewModel(results, markers);
