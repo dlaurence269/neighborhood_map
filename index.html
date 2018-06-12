@@ -15,87 +15,79 @@
     </head>
 
     <body>
-            <!-- Map -->
-            <div id="map" class="container"></div>
+        <!-- Map -->
+        <div id="map" class="container"></div>
 
-            <!-- Side Panel -->
-            <div id="side-panel" class="container col-xs-12 col-sm-4 col-lg-3">
-                <button id="close-side-panel-button" class="button glyphicon glyphicon-chevron-up collapse-expand-panel"></button>
-                <button id="open-side-panel-button" class="button glyphicon glyphicon-chevron-down collapse-expand-panel hidden"></button>
-                <div id="search-and-results">
-                    <!-- Search Bar -->
-                    <input id="searchbar" class="form-control" type="text" placeholder="Search" 
-                    data-bind="value: searchString, valueUpdate: 'keyup'" autocomplete="off">
-                    <hr>
-                    <!-- List of Results -->
-                    <div id="results" data-bind="foreach: filteredResults">
-                        <div class="result" data-bind="attr:{'data-id': id}, event: { click: $root.showResultFromSideBar }">
-                            <div class="row title-line">
-                                <img class="img-responsive col-xs-4" data-bind="attr:{src: imageURL}" alt="Image">
-                                <p class="title" data-bind="text: name"></p>
+        <!-- Side Panel -->
+        <div id="side-panel" class="container col-xs-12 col-sm-4 col-lg-3">
+            <button id="close-side-panel-button" class="button glyphicon glyphicon-chevron-up collapse-expand-panel"></button>
+            <button id="open-side-panel-button" class="button glyphicon glyphicon-chevron-down collapse-expand-panel hidden"></button>
+            <div id="search-and-results">
+                <!-- Search Bar -->
+                <input id="searchbar" class="form-control" type="text" placeholder="Search" 
+                data-bind="value: searchString, valueUpdate: 'keyup'" autocomplete="off">
+                <hr>
+                <!-- List of Results -->
+                <div id="results" data-bind="foreach: filteredResults">
+                    <div class="result" data-bind="attr:{'data-id': id}, event: { click: $root.showResultFromSideBar }">
+                        <div class="row title-line">
+                            <img class="img-responsive col-xs-4" data-bind="attr:{src: imageURL}" alt="Image">
+                            <p class="title" data-bind="text: name"></p>
+                        </div>
+                        <p class="description" data-bind="text: description"></p>
+                        <div class="below-title collapse-expand-result hidden">
+                            <div class="access-details hidden" data-bind="attr:{id: 'access-details_' + $index()}">
+                                <p data-bind="if: address"><i class="fas fa-map-marker"></i> <span data-bind="text: address"></span></p>
+                                <p data-bind="if: number"><i class="fas fa-phone"></i> <span data-bind="text: number"></span></p>
+                                <p data-bind="if: hours"><i class="fas fa-clock"></i> <span data-bind="text: hours"></span></p>
+                                <p data-bind="if: closestTransitStop"><i class="fas fa-subway"></i> <span data-bind="text: closestTransitStop"></span></p>
                             </div>
-                            <p class="description" data-bind="text: description"></p>
-                            <div class="below-title collapse-expand-result hidden">
-                                <div class="access-details hidden" data-bind="attr:{id: 'access-details_' + $index()}">
-                                    <p data-bind="if: address"><i class="fas fa-map-marker"></i> <span data-bind="text: address"></span></p>
-                                    <p data-bind="if: number"><i class="fas fa-phone"></i> <span data-bind="text: number"></span></p>
-                                    <p data-bind="if: hours"><i class="fas fa-clock"></i> <span data-bind="text: hours"></span></p>
-                                    <p data-bind="if: closestTransitStop"><i class="fas fa-subway"></i> <span data-bind="text: closestTransitStop"></span></p>
-                                </div>
-                                
-                                <div class="yelp">
-                                    <div data-bind="if: alias && rating && review_count && yelpURL">
-                                        <p>
-                                            <i class="fab fa-yelp"></i>
-                                            <a data-bind="attr:{href: yelpURL}" target="_alt" onclick="preventCollapse(event)">
-                                                <span data-bind="text: review_count"></span> reviews
-                                            </a>
-                                        </p>
-                                        <p>
-                                            <span data-bind="with: rating">
-                                                <span data-bind="foreach: starsForRating($data)">
-                                                    <i class="fas" data-bind="css: $data"></i>
-                                                </span>
-                                            </span> 
-                                            <span data-bind="text: rating"></span> Stars
-                                        </p>
-                                    </div>
-                                    <p data-bind="if: !(alias && rating && review_count && yelpURL)">
-                                        <span class="italic"><i class="fab fa-yelp"></i> No Yelp data available</span>
+                            
+                            <div class="yelp">
+                                <div data-bind="if: alias && rating && review_count && yelpURL">
+                                    <p>
+                                        <i class="fab fa-yelp"></i>
+                                        <a data-bind="attr:{href: yelpURL}" target="_alt" onclick="preventCollapse(event)">
+                                            <span data-bind="text: review_count"></span> reviews
+                                        </a>
+                                    </p>
+                                    <p>
+                                        <span data-bind="with: rating">
+                                            <span data-bind="foreach: starsForRating($data)">
+                                                <i class="fas" data-bind="css: $data"></i>
+                                            </span>
+                                        </span> 
+                                        <span data-bind="text: rating"></span> Stars
                                     </p>
                                 </div>
-                                <hr/>
-                                <div class="row web-links">
-                                    <!-- ko if: website -->
-                                    <a data-bind="attr:{href: website}" target="_blank" onclick="preventCollapse(event)">
-                                        <i class="fas fa-info-circle"></i> Website
-                                    </a>
-                                    <!-- /ko -->
-                                    <!-- ko if: tripAdvisor -->
-                                    <a data-bind="attr:{href: tripAdvisor}" target="_blank" onclick="preventCollapse(event)">
-                                        <i class="fab fa-tripadvisor"></i> Trip&nbsp;Advisor
-                                    </a>
-                                    <!-- /ko -->
-                                    <!-- ko if: wikiLink -->
-                                    <a data-bind="attr:{href: wikiLink}" target="_blank" onclick="preventCollapse(event)">
-                                        <i class="fab fa-wikipedia-w"></i> Wikipedia
-                                    </a>
-                                    <!-- /ko -->
-                                </div>
+                                <p data-bind="if: !(alias && rating && review_count && yelpURL)">
+                                    <span class="italic"><i class="fab fa-yelp"></i> No Yelp data available</span>
+                                </p>
+                            </div>
+                            <hr/>
+                            <div class="row web-links">
+                                <!-- ko if: website -->
+                                <a data-bind="attr:{href: website}" target="_blank" onclick="preventCollapse(event)">
+                                    <i class="fas fa-info-circle"></i> Website
+                                </a>
+                                <!-- /ko -->
+                                <!-- ko if: tripAdvisor -->
+                                <a data-bind="attr:{href: tripAdvisor}" target="_blank" onclick="preventCollapse(event)">
+                                    <i class="fab fa-tripadvisor"></i> Trip&nbsp;Advisor
+                                </a>
+                                <!-- /ko -->
+                                <!-- ko if: wikiLink -->
+                                <a data-bind="attr:{href: wikiLink}" target="_blank" onclick="preventCollapse(event)">
+                                    <i class="fab fa-wikipedia-w"></i> Wikipedia
+                                </a>
+                                <!-- /ko -->
                             </div>
                         </div>
-                        <hr>
                     </div>
+                    <hr>
                 </div>
             </div>
-
-            <!-- InfoWindow Content -->
-           <!--  <div id="info-window-content-0" class="hidden">
-                <div class="rating-and-review">
-                    <p class="rating">Rating: 4.5</p>
-                    <p class="review-count">Review Count: 355</p>
-                </div>
-            </div> -->
+        </div>
      
         <!-- Load JavaScript -->
         <script src="js/vendor/knockout_2.2.0.js"></script>
