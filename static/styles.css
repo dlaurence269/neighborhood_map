@@ -41,6 +41,7 @@
     border: 1px solid gray;
     top: 0;
     left: 0;
+    padding: 0;
 }
 
 #side-panel hr {
@@ -79,8 +80,7 @@
 }
 
 .result {
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding: 10px;
 }
 
 .result:hover {
