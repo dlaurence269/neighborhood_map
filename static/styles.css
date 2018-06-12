@@ -96,6 +96,10 @@
     background: #e0ffff;
 }
 
+.italic {
+    font-style: italic;
+}
+
 .title-line {
     display: flex;
     align-items: center;

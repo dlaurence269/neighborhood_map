@@ -55,9 +55,14 @@
                                 <hr/>
                                 <div class="yelp">
                                     <p><i class="fab fa-yelp"></i> Yelp Content</p>
-                                    <p>
-                                        Rating: <span data-bind="text: rating"></span> <i class="fas fa-star"></i>
-                                        <a data-bind="attr:{href: yelpURL}" onclick="preventCollapse(event)"><span data-bind="text: review_count"></span> reviews</a>
+                                    <p data-bind="if: alias && rating && review_count && yelpURL">
+                                        Rating: <span data-bind="text: rating"></span> <i class="fas fa-star"></i></span>
+                                        <a data-bind="attr:{href: yelpURL}" target="_alt" onclick="preventCollapse(event)">
+                                            <span data-bind="text: review_count"></span> reviews
+                                        </a>
+                                    </p>
+                                    <p data-bind="if: !(alias && rating && review_count && yelpURL)">
+                                        <span class="italic">No data available</span>
                                     </p>
                                 </div>
                             </div>
