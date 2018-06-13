@@ -134,6 +134,7 @@ function populateInfoWindows() {
         return new google.maps.InfoWindow({ content: content });
     });
 }
+
 function initMap() {
     // Instantiate Map with Rome as Center
     const rome = {lat: 41.887330, lng: 12.485204};
@@ -190,6 +191,13 @@ function initMap() {
     highlightedIcon = makeMarkerIcon('FFFF24');
 }
 
+function handleMapError() {
+    alert(
+        "Sorry about that! " + 
+        "Looks like Google Maps is having a problem right now. " +
+        "Come back and check again later ☺️."
+    )
+}
 
 /* ---------- View Model ---------- */
 function ViewModel(results, markers) {
