@@ -54,7 +54,10 @@ function getYelpData() {
             newResults.forEach(newResult => viewModel.results.push(newResult));
         },
         error: function(error){
-            console.error("Yelp data not loaded", error);
+            alert(
+                "Connecting to Yelp failed, so that info isn't currently available. " +
+                "Please enjoy the rest of the site in the meantime ☺️. "
+            )
         }
     });
 }
