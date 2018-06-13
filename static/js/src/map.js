@@ -189,7 +189,13 @@ function initMap() {
 
     highlightedIcon = makeMarkerIcon('FFFF24');
 }
-
+function handleMapError() {
+    alert(
+        "Sorry about that! " + 
+        "Looks like Google Maps is having a problem right now. " +
+        "Come back and check again later ☺️."
+    )
+}
 
 /* ---------- View Model ---------- */
 function ViewModel(results, markers) {
